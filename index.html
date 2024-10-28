@@ -1,118 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScubeScripts</title>
-    <link rel="icon" href="scube.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2b2b2b;
-        }
-        .header {
-            width: 100%;
-            background-color: #1b1b1b;
-            color: white;
-            padding: 10px 0;
-        }
-        .header-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 70%;
-            margin: 0 auto;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-            border-radius: 15%;
-        }
-        .logotext {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .navbar ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        .navbar li {
-            margin: 0 15px;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-        .navbar a:hover {
-            background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
-            color: black;
-        }
-        .social-media a {
-            color: white;
-            text-decoration: none;
-            margin-left: 10px;
-            font-size: 20px;
-            transition: color 0.3s ease;
-        }
-        .social-media a:hover {
-            color: white;
-        }
-        .social-media a:hover .fab.fa-discord {
-            color: #7289da;
-        }
-        .social-media a:hover .fab.fa-github {
-            color: #BC86E0;
-        }
-        .under-construction {
-            text-align: center;
-            background-color: #252525;
-            color: white;
-            padding: 30px 0;
-            font-size: 24px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScubeScripts</title>
+  <link rel="icon" href="scube.ico" type="image/x-icon">
+  <style>
+    /* Start Global Rules */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    a {
+      text-decoration: none;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Small */
+    @media (min-width: 768px) {
+      .container {
+        width: 750px;
+      }
+    }
+    /* Medium */
+    @media (min-width: 992px) {
+      .container {
+        width: 970px;
+      }
+    }
+    /* Large */
+    @media (min-width: 1200px) {
+      .container {
+        width: 1170px;
+      }
+    }
+    /* End Global Rules */
+
+    /* Start Landing Page */
+    .landing-page header {
+      min-height: 80px;
+      display: flex;
+    }
+    @media (max-width: 767px) {
+      .landing-page header {
+        min-height: auto;
+        display: initial;
+      }
+    }
+    .landing-page header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @media (max-width: 767px) {
+      .landing-page header .container {
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+    .landing-page header .logo {
+      color: #5d5d5d;
+      font-style: italic;
+      text-transform: uppercase;
+      font-size: 20px;
+    }
+    @media (max-width: 767px) {
+      .landing-page header .logo {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    }
+    .landing-page header .links {
+      display: flex;
+      align-items: center;
+    }
+    @media (max-width: 767px) {
+      .landing-page header .links {
+        text-align: center;
+        gap: 10px;
+      }
+    }
+    .landing-page header .links li {
+      margin-left: 30px;
+      cursor: pointer;
+      transition: .3s;
+    }
+    .landing-page header .links a {
+      color: #5d5d5d; /* Standardfarbe: Grau */
+      transition: color 0.3s;
+    }
+    .landing-page header .links a:hover {
+      color: #6c63ff; /* Hover-Farbe: Blau */
+    }
+    .landing-page header .links li:last-child a {
+      color: #FFF; /* GitHub-Button Textfarbe: Weiß */
+    }
+    .landing-page header .links li:last-child {
+      background-color: #6c63ff; /* GitHub-Button Hintergrundfarbe: Blau */
+      padding: 10px 20px;
+      border-radius: 20px;
+    }
+    .landing-page .content .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 140px;
+      min-height: calc(100vh - 80px);
+    }
+    @media (max-width: 767px) {
+      .landing-page .content .container {
+        gap: 0;
+        min-height: calc(100vh - 101px);
+        justify-content: center;
+        flex-direction: column-reverse;
+      }
+    }
+    @media (max-width: 767px) {
+      .landing-page .content .info {
+        text-align: center;
+        margin-bottom: 15px 
+      }
+    }
+    .landing-page .content .info h1 {
+      color: #5d5d5d;
+      font-size: 44px;
+    }
+    .landing-page .content .info p {
+      margin: 0;
+      line-height: 1.6;
+      font-size: 15px;
+      color: #5d5d5d;
+    }
+    .landing-page .content .info button {
+      border: 0;
+      border-radius: 20px;
+      padding: 12px 30px;
+      margin-top: 30px;
+      cursor: pointer;
+      color: #FFF;
+      background-color: #6c63ff;
+    }
+    .landing-page .content .image img {
+      max-width: 100%;
+    }
+    /* End Landing Page */
+  </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-wrapper">
-            <div class="logo">
-                <img src="logo.png" alt="Logo">
-                <div class="logotext">Scube Scripts</div>
-            </div>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#docs">Docs</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#support">Support Us</a></li>
-                </ul>
-            </nav>
-            <div class="social-media">
-                <a href="https://discord.gg/Mqgewse3Yc" target="_blank"><i class="fab fa-discord"></i></a>
-                <a href="https://github.com/ScubeScripts" target="_blank"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
+  <!-- Start Landing Page -->
+  <div class="landing-page">
+    <header>
+      <div class="container">
+        <a href="#" class="logo">Scube <b>Scripts</b></a>
+        <ul class="links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#docs">Docs</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="https://github.com/ScubeScripts" target="_blank">GitHub</a></li>
+        </ul>        
+      </div>
     </header>
-
-    <div class="under-construction">
-        Site under construction
+    <div class="content">
+      <div class="container">
+        <div class="info">
+          <h1>Site under construction</h1>
+          <p>Hello, my site is currently still under construction, but you can also find everything important on my Discord.</p>
+          <a href="https://discord.gg/Mqgewse3Yc" target="_blank">
+            <button>My Discord Server</button>
+          </a>          
+        </div>
+        <div class="image">
+          <img src="https://cdn.discordapp.com/attachments/1242113760777338990/1250496165569499216/bg.png?ex=67206d0e&is=671f1b8e&hm=4d16b08a43c115dc1b8c48c32318c584c60e4bbc8891ad6d321fd83241021e14&" alt="Inspiration Image">
+        </div>
+      </div>
     </div>
-
+  </div>
+  <!-- End Landing Page -->
 </body>
 </html>
-
-</body>
-</html>
-
