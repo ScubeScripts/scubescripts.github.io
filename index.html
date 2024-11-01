@@ -6,13 +6,14 @@
   <title>ScubeScripts</title>
   <link rel="icon" href="scube.ico" type="image/x-icon">
   <style>
-    /* Start Global Rules */
     * {
       box-sizing: border-box;
     }
     body {
       font-family: 'Open Sans', sans-serif;
-      background-color: #d5d5d5;
+      background-color: #282828;
+      margin: 0;
+      padding: 0;
     }
     a {
       text-decoration: none;
@@ -28,47 +29,30 @@
       margin-left: auto;
       margin-right: auto;
     }
-    /* Small */
     @media (min-width: 768px) {
       .container {
         width: 750px;
       }
     }
-    /* Medium */
     @media (min-width: 992px) {
       .container {
         width: 970px;
       }
     }
-    /* Large */
     @media (min-width: 1200px) {
       .container {
         width: 1170px;
       }
     }
-    /* End Global Rules */
-
-    /* Start Landing Page */
     .landing-page header {
       min-height: 80px;
       display: flex;
-    }
-    @media (max-width: 767px) {
-      .landing-page header {
-        min-height: auto;
-        display: initial;
-      }
-    }
-    .landing-page header .container {
-      display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-    @media (max-width: 767px) {
-      .landing-page header .container {
-        flex-direction: column;
-        justify-content: center;
-      }
+      background-color: #404040;
+      padding: 0 15px;
+      gap: 30px;
+      position: relative; /* Macht die Positionierung für das Dropdown-Menü möglich */
     }
     .landing-page header .logo {
       color: #6c63ff;
@@ -76,21 +60,15 @@
       text-transform: uppercase;
       font-size: 20px;
     }
-    @media (max-width: 767px) {
-      .landing-page header .logo {
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #6c63ff;
     }
     .landing-page header .links {
       display: flex;
       align-items: center;
-    }
-    @media (max-width: 767px) {
-      .landing-page header .links {
-        text-align: center;
-        gap: 10px;
-      }
     }
     .landing-page header .links li {
       margin-left: 30px;
@@ -98,20 +76,45 @@
       transition: .3s;
     }
     .landing-page header .links a {
-      color: #5d5d5d; /* Standardfarbe: Grau */
+      color: #ffffff;
       transition: color 0.3s;
     }
     .landing-page header .links a:hover {
-      color: #6c63ff; /* Hover-Farbe: Blau */
-      text-shadow: 0 0 8px rgba(108, 99, 255, 0.6); /* Glow-Effekt */
+      color: #6c63ff;
+      text-shadow: 0 0 8px rgba(108, 99, 255, 0.6);
     }
     .landing-page header .links li:last-child a {
-      color: #FFF; /* GitHub-Button Textfarbe: Weiß */
+      color: #FFF;
     }
     .landing-page header .links li:last-child {
-      background-color: #6c63ff; /* GitHub-Button Hintergrundfarbe: Blau */
+      background-color: #6c63ff;
       padding: 10px 20px;
       border-radius: 20px;
+    }
+    @media (max-width: 767px) {
+      .menu-toggle {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: #6c63ff;
+        margin-left: auto; /* Sorgt dafür, dass das Menü rechts ausgerichtet ist */
+        padding-left: 5%; /* Fügt einen Abstand zwischen dem Logo und dem Dropdown-Menü hinzu */
+      }
+      .landing-page header .links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #404040;
+        width: 100%;
+        padding: 15px;
+        position: absolute;
+        top: 80px; /* Position direkt unterhalb der Navbar */
+        left: 0;
+        z-index: 1;
+      }
+      .landing-page header .links.show {
+        display: flex;
+      }
     }
     .landing-page .content .container {
       display: flex;
@@ -122,27 +125,33 @@
     }
     @media (max-width: 767px) {
       .landing-page .content .container {
-        gap: 0;
+        gap: 20px;
+        padding: 20px;
         min-height: calc(100vh - 101px);
         justify-content: center;
         flex-direction: column-reverse;
-      }
-    }
-    @media (max-width: 767px) {
-      .landing-page .content .info {
         text-align: center;
-        margin-bottom: 15px 
       }
     }
     .landing-page .content .info h1 {
-      color: #5d5d5d;
+      color: #ffffff;
       font-size: 44px;
+    }
+    @media (max-width: 767px) {
+      .landing-page .content .info h1 {
+        font-size: 32px;
+      }
     }
     .landing-page .content .info p {
       margin: 0;
       line-height: 1.6;
       font-size: 15px;
-      color: #5d5d5d;
+      color: #ffffff;
+    }
+    @media (max-width: 767px) {
+      .landing-page .content .info p {
+        font-size: 16px;
+      }
     }
     .landing-page .content .info button {
       border: 0;
@@ -153,26 +162,37 @@
       color: #FFF;
       background-color: #6c63ff;
     }
+    @media (max-width: 767px) {
+      .landing-page .content .info button {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+    }
     .landing-page .content .image img {
       max-width: 100%;
       border-radius: 25px;
     }
-    /* End Landing Page */
+    @media (max-width: 767px) {
+      .landing-page .content .image img {
+        max-width: 90%;
+        margin-top: 20px;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Start Landing Page -->
   <div class="landing-page">
     <header>
-      <div class="container">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
         <a href="#" class="logo">Scube <b>Scripts</b></a>
-        <ul class="links">
+        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+        <ul class="links" id="navLinks">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#docs">Docs</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="https://github.com/ScubeScripts" target="_blank">GitHub</a></li>
-        </ul>        
+        </ul>
       </div>
     </header>
     <div class="content">
@@ -182,7 +202,7 @@
           <p>Hello, my site is currently still under construction, but you can also find everything important on my Discord.</p>
           <a href="https://discord.gg/Mqgewse3Yc" target="_blank">
             <button>My Discord Server</button>
-          </a>          
+          </a>
         </div>
         <div class="image">
           <img src="bg.png">
@@ -190,6 +210,10 @@
       </div>
     </div>
   </div>
-  <!-- End Landing Page -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
 </body>
 </html>
