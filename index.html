@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScubeScripts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-lua.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="images/logo.png" alt="ScubeScripts Logo" class="site-logo">
+                <h1 class="main-title">ScubeScripts-Docs</h1>
+            </div>
+            <!-- <div class="search-section">
+                <div class="search-container">
+                    <input type="text" placeholder="Search..." class="search-input">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div> -->
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="nav-item active" onclick="showPage('home')">
+                <i class="fas fa-home"></i> Home
+            </div>
+            <div class="nav-item" onclick="showPage('script1')">
+                <i class="fas fa-font"></i> sc_textUI
+            </div>
+            <div class="nav-item" onclick="showPage('script2')">
+                <i class="fas fa-chart-bar"></i> sc_progress
+            </div>
+            <div class="nav-item" onclick="showPage('script3')">
+                <i class="fas fa-heart-pulse"></i> sc_hud
+            </div>
+            <div class="nav-item" onclick="showPage('script4')">
+                <i class="fas fa-coins"></i> sc_taxsystem
+            </div>
+            <div class="nav-item" onclick="showPage('script5')">
+                <i class="fas fa-id-card"></i> sc_licensemanager
+            </div>
+            <div class="nav-item" onclick="showPage('script6')">
+                <i class="fas fa-dumpster"></i> sc_dumpster
+            </div>
+            <div class="nav-item" onclick="showPage('script7')">
+                <i class="fas fa-wheat-awn"></i> sc_lawn
+            </div>
+            <div class="nav-item" onclick="showPage('script8')">
+                <i class="fas fa-magnifying-glass-dollar"></i> sc_findatm
+            </div>
+            <div class="nav-item" onclick="showPage('script9')">
+                <i class="fas fa-user-doctor"></i> sc_jobcenter
+            </div>
+            <div class="nav-item" onclick="showPage('script10')">
+                <i class="fas fa-money-bill-transfer"></i> sc_resell
+            </div>
+            <div class="nav-item" onclick="showPage('script11')">
+                <i class="fas fa-car"></i> sc_cartax
+            </div>
+            <div class="nav-item" onclick="showPage('script12')">
+                <i class="fas fa-mobile-screen"></i> sc_phonetax
+            </div>
+            <div class="nav-item" onclick="showPage('script13')">
+                <i class="fas fa-fire-extinguisher"></i> sc_extinguisher
+            </div>
+            <!-- <div class="nav-item" onclick="showPage('contact')">
+                <i class="fas fa-envelope"></i> Contact Us
+            </div> -->
+        </div>
+        
+        <div class="content">
+            <div id="home" class="page-content active">
+                <div class="box warning"><i class="fas fa-triangle-exclamation"></i><strong>Note:</strong> This page is not yet finished, there are still some errors in the system.</div>
+                <h2>Introduction</h2>
+                <p>ScubeScripts is a small group of developers creating open source resources for FiveM. We place a high priority on quality, security, performance, and stability. The official documentation for all resources developed by the ScubeScripts team can be found on this website.
+
+                    If you notice any inconsistencies in the documentation or have suggestions for improvements, please contact us via the contact page.</p>
+            
+                <h2>Our Team</h2>
+                <p>ScubeScripts consists of a small team of amateur and professional programmers. We enjoy developing free and open-source resources and sharing them with the community. However, we invest a lot of time and effort into maintaining and supporting these projects.
+
+                    Our team members volunteer their time to keep everything running. You're welcome to take a closer look at their work or show your appreciation by supporting us.</p>
+                
+                <div class="team-cards">
+                    <div class="team-card">
+                        <img src="images/lumpii404.png" alt="Lumpii404">
+                        <div class="card-content">
+                            <h3>Lumpii404</h3>
+                            <p>Gründer von ScubeScripts – leidenschaftlicher Frontend- und HUD-Entwickler mit Fokus auf Performance & Design.</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="images/skull.png" alt="SkullCode">
+                        <div class="card-content">
+                            <h3>SkullCode</h3>
+                            <p>Backend-Dev mit Liebe zum sauberen Code. Arbeite hauptsächlich an Performance und Stabilität der Systeme.</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="images/proto.png" alt="Prototyp666">
+                        <div class="card-content">
+                            <h3>Prototyp666</h3>
+                            <p>Ich bringe kreative Ideen ins Team und entwickle innovative Features und logische Konzepte für neue Ressourcen.</p>
+                        </div>
+                    </div>
+                </div>                
+
+                <p></p>
+            
+                <h2>Our Best Projects</h2>
+                <div class="projects-grid">
+                    <a href="https://github.com/Lumpii404/sc_hud" target="_blank">
+                        <img src="https://github-readme-stats.vercel.app/api/pin/?username=Lumpii404&repo=sc_hud&theme=dark#gh-dark-mode-only" alt="sc_hud">
+                    </a>
+                    <a href="https://github.com/Lumpii404/sc_taxsystem" target="_blank">
+                        <img src="https://github-readme-stats.vercel.app/api/pin/?username=Lumpii404&repo=sc_taxsystem&theme=dark#gh-dark-mode-only" alt="sc_taxsystem">
+                    </a>
+                    <a href="https://github.com/ScubeScripts/jsfour-idcard" target="_blank">
+                        <img src="https://github-readme-stats.vercel.app/api/pin/?username=scubescripts&repo=jsfour-idcard&theme=dark#gh-dark-mode-only" alt="jsfour-idcard">
+                    </a>
+                    <a href="https://github.com/Lumpii404/sc_animatedNPC" target="_blank">
+                        <img src="https://github-readme-stats.vercel.app/api/pin/?username=Lumpii404&repo=sc_animatedNPC&theme=dark#gh-dark-mode-only" alt="sc_animatedNPC">
+                    </a>
+                </div>
+            </div>            
+            
+            <div id="script1" class="page-content">
+                <h2>sc_textUI <span class="tag">Standalone</span></h2>
+                
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script1', 'client')">
+                        <i class="fas fa-desktop"></i> client.lua
+                    </div>
+                    <div class="version-option" onclick="showVersion('script1', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div>
+                    <div class="version-option" onclick="showVersion('script1', 'replace')">
+                        <i class="fas fa-i-cursor"></i> Replace
+                    </div>
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_textUI" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+                
+                <div id="script1-client" class="version-content active" data-search-terms="client version browser javascript frontend">
+                    <h3>Show UI with text and key</h3>
+                    <div class="code-block">
+                      <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                      <pre><code class="language-lua">
+exports.sc_textUI:showUI(key, message)
+
+-- example
+
+exports.sc_textUI:showUI("E", "Press to interact")
+                      </code></pre>
+                    </div>
+
+                    <h3>Hide UI</h3>
+                    <div class="code-block">
+                      <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                      <pre><code class="language-lua">
+exports.sc_textUI:hideUI()
+                      </code></pre>
+                    </div>
+                    <h3>Example script (client.lua)</h3>
+                    <div class="code-block">
+                      <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                      <pre><code class="language-lua">
+if distance < 5.0 then
+    DrawMarker(1, marker.x, marker.y, marker.z - 1.0, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 0.5, 36, 144, 218, 0.8, false, true, 2, nil, nil, false)
+    if distance < 1.0 then
+        exports.sc_textUI:showUI("E", "Press to interact")
+        if IsControlJustPressed(0, 38) then
+            exports.sc_textUI:hideUI()
+            TriggerServerEvent('sc_lc:checkJobAndOpenMenu')
+        end
+    else
+        exports.sc_textUI:hideUI()
+    end
+else
+end
+                      </code></pre>
+                    </div>
+                </div>
+                
+                <div id="script1-server" class="version-content" data-search-terms="server version nodejs python backend">
+                <h3>Show UI with text and key</h3>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                  <pre><code class="language-lua">
+TriggerClientEvent("sc_textUI:showUI", playerId, key, message)
+
+-- example
+
+TriggerClientEvent("sc_textUI:showUI", playerId, "E", "Press to interact")
+                  </code></pre>
+                </div>
+
+                <h3>Hide UI</h3>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                  <pre><code class="language-lua">
+TriggerClientEvent("sc_textUI:hideUI", playerId)
+                  </code></pre>
+                </div>
+                </div>
+
+                <div id="script1-replace" class="version-content" data-search-terms="server version nodejs python backend">
+                    <div class="box tip"><i class="fas fa-lightbulb"></i><strong>Tip:</strong> If you have any problems with the installation, please contact our support team.</div>
+                    <p></p>
+                    <h3>If you want to replace the standard ESX notification with ours, you need to change the following:</h3>
+                    <p></p>
+                    <h4>Replace the entire code here esx_textui/TextUI.lua with:</h4>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        <pre><code class="language-lua">
+Debug = ESX.GetConfig().EnableDebug
+local isShowing = false
+                    
+---@param message string
+local function TextUI(message)
+    isShowing = true
+    local key, text = message:match("%[(%w)%]%s*(.*)")
+                    
+    if not key then
+        key = "default"
+        text = message
+    end
+                    
+    exports.sc_textUI:showUI(key, text)
+end
+                    
+local function HideUI()
+    if not isShowing then
+        return
+    end
+    isShowing = false
+    exports.sc_textUI:hideUI()
+end
+                    
+exports("TextUI", TextUI)
+exports("HideUI", HideUI)
+ESX.SecureNetEvent("ESX:TextUI", TextUI)
+ESX.SecureNetEvent("ESX:HideUI", HideUI)
+                    
+if Debug then
+    RegisterCommand("textui:test", function()
+        TextUI("Press [E] to use")
+    end, false)
+                    
+    RegisterCommand("textui:hide", function()
+        HideUI()
+    end, false)
+end
+                        </code></pre>
+                      </div>
+                </div>
+            </div>
+            
+            <div id="script2" class="page-content">
+                <h2>sc_progress <span class="tag">Standalone</span></h2>
+                
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script2', 'client')">
+                        <i class="fas fa-desktop"></i> client.lua
+                    </div>
+                    <div class="version-option" onclick="showVersion('script2', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div>
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_progress" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+                
+                <div id="script2-client" class="version-content active">
+                    <h3>Show UI with text and key</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        <pre><code class="language-lua">
+exports.sc_progress:showNUI(time, message)
+
+-- example
+
+exports.sc_progress:showNUI(5000, "Loading...")
+                      </code></pre>
+                    </div>
+                    <h3>Example script (client.lua)</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        <pre><code class="language-lua">
+function startSearching(time, dict, anim, cb)
+    local ped = GetPlayerPed(-1)
+    canSearch = false
+
+    RequestAnimDict(dict)
+    while not HasAnimDictLoaded(dict) do
+        Citizen.Wait(0)
+    end
+
+    exports.sc_progress:showNUI(time, Translation[Config.Locale]['search'])
+    TaskPlayAnim(ped, dict, anim, 8.0, 8.0, time, 1, 1, 0, 0, 0)
+
+    Wait(time)
+    ClearPedTasks(ped)
+    canSearch = true
+    TriggerServerEvent(cb)
+end
+                      </code></pre>
+                    </div>
+                </div>
+                
+                <div id="script2-server" class="version-content">
+                    <h3>Show UI with text and key</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        <pre><code class="language-lua">
+TriggerClientEvent("sc_progress:showNUI", playerId, time, message)
+
+-- example
+
+TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
+                      </code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="script3" class="page-content"> 
+                <h2>sc_hud <span class="tag">ESX</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script3', 'client')">
+                        <i class="fas fa-desktop"></i> client.lua
+                    </div>
+                    <div class="version-option" onclick="showVersion('script3', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div>
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_hud" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+
+                <div id="script3-client" class="version-content active">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div>
+
+                <div id="script3-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div>
+            </div>
+
+            <div id="script4" class="page-content">
+                <h2>sc_taxsystem <span class="tag">ESX</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script4', 'client')">
+                        <i class="fas fa-desktop"></i> You caught us!
+                    </div>
+                    <!-- <div class="version-option" onclick="showVersion('script4', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div> -->
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_taxsystem" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+
+                <div id="script4-client" class="version-content active">
+                    <p>There's nothing here yet.</p>
+                </div>
+                <!-- <div id="script4-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div> -->
+            </div>
+
+            <div id="script5" class="page-content">
+                <h2>sc_licensemanager <span class="tag">ESX</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script5', 'client')">
+                        <i class="fas fa-desktop"></i> You caught us!
+                    </div>
+                    <!-- <div class="version-option" onclick="showVersion('script5', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div> -->
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_licensemanager" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+
+                <div id="script5-client" class="version-content active">
+                    <p>There's nothing here yet.</p>
+                </div>
+                <!-- <div id="script5-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div> -->
+            </div>
+
+            <div id="script6" class="page-content">
+                <h2>sc_dumpster <span class="tag">ESX</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script6', 'client')">
+                        <i class="fas fa-desktop"></i> You caught us!
+                    </div>
+                    <!-- <div class="version-option" onclick="showVersion('script6', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div> -->
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_dumpster" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+
+                <div id="script6-client" class="version-content active">
+                    <p>There's nothing here yet.</p>
+                </div>
+                <!-- <div id="script6-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div> -->
+            </div>
+
+            <div id="script7" class="page-content">
+                <h2>sc_lawn <span class="tag">ESX</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script7', 'client')">
+                        <i class="fas fa-desktop"></i> You caught us!
+                    </div>
+                    <!-- <div class="version-option" onclick="showVersion('script7', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div> -->
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_lawn" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+
+                <div id="script7-client" class="version-content active">
+                    <p>There's nothing here yet.</p>
+                </div>
+                <!-- <div id="script7-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div> -->
+            </div>
+
+            <div id="script8" class="page-content">
+                <h2>sc_findatm <span class="tag">ESX</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script8', 'client')">
+                        <i class="fas fa-desktop"></i> You caught us!
+                    </div>
+                    <!-- <div class="version-option" onclick="showVersion('script8', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div> -->
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_findatm" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+
+                <div id="script8-client" class="version-content active">
+                    <p>There's nothing here yet.</p>
+                </div>
+                <!-- <div id="script8-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div> -->
+            </div>
+
+            <div id="script9" class="page-content">
+                <h2>sc_jobcenter <span class="tag">ESX</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script9', 'client')">
+                        <i class="fas fa-desktop"></i> You caught us!
+                    </div>
+                    <!-- <div class="version-option" onclick="showVersion('script9', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div> -->
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_jobcenter" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+
+                <div id="script9-client" class="version-content active">
+                    <p>There's nothing here yet.</p>
+                </div>
+                <!-- <div id="script9-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div> -->
+            </div>
+
+            <div id="script10" class="page-content">
+                <h2>sc_resell <span class="tag">ESX</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script10', 'client')">
+                        <i class="fas fa-desktop"></i> You caught us!
+                    </div>
+                    <!-- <div class="version-option" onclick="showVersion('script10', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div> -->
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_resell" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+
+                <div id="script10-client" class="version-content active">
+                    <p>There's nothing here yet.</p>
+                </div>
+                <!-- <div id="script10-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div> -->
+            </div>
+
+            <div id="script11" class="page-content">
+                <h2>sc_cartax <span class="tag">ESX</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script11', 'client')">
+                        <i class="fas fa-desktop"></i> You caught us!
+                    </div>
+                    <!-- <div class="version-option" onclick="showVersion('script11', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div> -->
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_cartax" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+
+                <div id="script11-client" class="version-content active">
+                    <p>There's nothing here yet.</p>
+                </div>
+                <!-- <div id="script11-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div> -->
+            </div>
+
+            <div id="script12" class="page-content">
+                <h2>sc_phonetax <span class="tag">ESX</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script12', 'client')">
+                        <i class="fas fa-desktop"></i> You caught us!
+                    </div>
+                    <!-- <div class="version-option" onclick="showVersion('script12', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div> -->
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_phonetax" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+
+                <div id="script12-client" class="version-content active">
+                    <p>There's nothing here yet.</p>
+                </div>
+                <!-- <div id="script12-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div> -->
+            </div>
+            
+            <div id="script13" class="page-content">
+                <h2>sc_extinguisher <span class="tag">ESX</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script13', 'client')">
+                        <i class="fas fa-desktop"></i> You caught us!
+                    </div>
+                    <!-- <div class="version-option" onclick="showVersion('script13', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div> -->
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_extinguisher" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+
+                <div id="script13-client" class="version-content active">
+                    <p>There's nothing here yet.</p>
+                </div>
+                <!-- <div id="script13-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div>Follow us on</div>
+        <div class="social-links">
+            <a href="https://github.com/ScubeScripts" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://discord.gg/Mqgewse03Yc" class="social-link" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="https://www.youtube.com/@ScubeScripts" class="social-link" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://forum.cfx.re/u/scubescripts/summary" class="social-link" target="_blank"><i class="fab fa-v"></i></a>
+        </div>
+        <div class="copyright">© 2022 ScubeScripts. All rights reserved.</div>
+    </footer>    
+
+    <script src="script.js"></script>
+</body>
+</html>
