@@ -17,7 +17,7 @@
         <div class="header-content">
             <div class="logo-section">
                 <img src="images/logo.png" alt="ScubeScripts Logo" class="site-logo">
-                <h1 class="main-title">ScubeScripts-Docs</h1>
+                <h1 class="main-title">ScubeScripts-Docs</h1> 
             </div>
             <!-- <div class="search-section">
                 <div class="search-container">
@@ -74,11 +74,17 @@
             <div class="nav-item" onclick="showPage('script13')">
                 <i class="fas fa-fire-extinguisher"></i> sc_extinguisher
             </div>
+            <div class="nav-item" onclick="showPage('script14')">
+                <i class="fas fa-person-walking"></i> sc_animatedNPC
+            </div>
         </div>
         
         <div class="content">
             <div id="home" class="page-content active">
-                <div class="box warning"><i class="fas fa-triangle-exclamation"></i><strong>Note:</strong> This page is not yet finished, there are still some errors in the system.</div>
+                <div class="box warning">
+                    <i class="fas fa-triangle-exclamation"></i>
+                    <div><strong>Note:</strong> This page is not yet finished, there are still some errors in the system. If you find a mistake, please report it to us.</div>
+                  </div>
                 <h2>Introduction</h2>
                 <p>ScubeScripts is a small group of developers creating open source resources for FiveM. We place a high priority on quality, security, performance, and stability. The official documentation for all resources developed by the ScubeScripts team can be found on this website.
 
@@ -94,21 +100,21 @@
                         <img src="images/lumpii404.png" alt="Lumpii404">
                         <div class="card-content">
                             <h3>Lumpii404</h3>
-                            <p>Gründer von ScubeScripts – leidenschaftlicher Frontend- und HUD-Entwickler mit Fokus auf Performance & Design.</p>
+                            <p>I am the founder of ScubeScripts - a passionate frontend and HUD developer with a focus on performance & design.</p>
                         </div>
                     </div>
                     <div class="team-card">
                         <img src="images/skull.png" alt="SkullCode">
                         <div class="card-content">
                             <h3>SkullCode</h3>
-                            <p>Backend-Dev mit Liebe zum sauberen Code. Arbeite hauptsächlich an Performance und Stabilität der Systeme.</p>
+                            <p>I'm rarely there, I mainly work on the performance and stability of the systems.</p>
                         </div>
                     </div>
                     <div class="team-card">
                         <img src="images/proto.png" alt="Prototyp666">
                         <div class="card-content">
                             <h3>Prototyp666</h3>
-                            <p>Ich bringe kreative Ideen ins Team und entwickle innovative Features und logische Konzepte für neue Ressourcen.</p>
+                            <p>I bring creative ideas to the team and push the other two to their limits.</p>
                         </div>
                     </div>
                 </div>                
@@ -117,18 +123,128 @@
             
                 <h2>Our Best Projects</h2>
                 <div class="projects-grid">
-                    <a href="https://github.com/Lumpii404/sc_hud" target="_blank">
-                        <img src="https://github-readme-stats.vercel.app/api/pin/?username=Lumpii404&repo=sc_hud&theme=dark#gh-dark-mode-only" alt="sc_hud">
-                    </a>
-                    <a href="https://github.com/Lumpii404/sc_taxsystem" target="_blank">
-                        <img src="https://github-readme-stats.vercel.app/api/pin/?username=Lumpii404&repo=sc_taxsystem&theme=dark#gh-dark-mode-only" alt="sc_taxsystem">
-                    </a>
-                    <a href="https://github.com/ScubeScripts/jsfour-idcard" target="_blank">
-                        <img src="https://github-readme-stats.vercel.app/api/pin/?username=scubescripts&repo=jsfour-idcard&theme=dark#gh-dark-mode-only" alt="jsfour-idcard">
-                    </a>
-                    <a href="https://github.com/Lumpii404/sc_animatedNPC" target="_blank">
-                        <img src="https://github-readme-stats.vercel.app/api/pin/?username=Lumpii404&repo=sc_animatedNPC&theme=dark#gh-dark-mode-only" alt="sc_animatedNPC">
-                    </a>
+                    <div class="project-card">
+                        <a href="https://github.com/Lumpii404/sc_hud" target="_blank">
+                            <div class="project-info">
+                                <h3>sc_hud</h3>
+                                <p>A modern HUD for FiveM.</p>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-star"></i> 16</span>
+                                    <span><i class="fas fa-code-branch"></i> 5</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://github.com/Lumpii404/sc_taxsystem" target="_blank">
+                            <div class="project-info">
+                                <h3>sc_taxsystem</h3>
+                                <p>An advanced tax system for FiveM.</p>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-star"></i> 14</span>
+                                    <span><i class="fas fa-code-branch"></i> 3</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://github.com/ScubeScripts/sc_licensemanager" target="_blank">
+                            <div class="project-info">
+                                <h3>sc_licensemanager</h3>
+                                <p>Simple script for managing licenses.</p>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-star"></i> 12</span>
+                                    <span><i class="fas fa-code-branch"></i> 2</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://github.com/Lumpii404/sc_textUI" target="_blank">
+                            <div class="project-info">
+                                <h3>sc_textUI</h3>
+                                <p>A Clean and Modern textUI.</p>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-star"></i> 7</span>
+                                    <span><i class="fas fa-code-branch"></i> 2</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://github.com/ScubeScripts/sc_progress" target="_blank">
+                            <div class="project-info">
+                                <h3>sc_progress</h3>
+                                <p>A Clean and Modern progressBar.</p>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-star"></i> 4</span>
+                                    <span><i class="fas fa-code-branch"></i> 1</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://github.com/ScubeScripts/sc_dumpster" target="_blank">
+                            <div class="project-info">
+                                <h3>sc_dumpster</h3>
+                                <p>Simple system for collecting waste.</p>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-star"></i> 2</span>
+                                    <span><i class="fas fa-code-branch"></i> 0</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://github.com/Lumpii404/sc_animatedNPC" target="_blank">
+                            <div class="project-info">
+                                <h3>sc_animatedNPC</h3>
+                                <p>A simple system for NPC animation.</p>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-star"></i> 4</span>
+                                    <span><i class="fas fa-code-branch"></i> 2</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://github.com/ScubeScripts/sc_lawn" target="_blank">
+                            <div class="project-info">
+                                <h3>sc_lawn</h3>
+                                <p>A simple gardener job.</p>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-star"></i> 2</span>
+                                    <span><i class="fas fa-code-branch"></i> 0</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <p></p>
+            
+                <h2>Our Recommendation</h2>
+                <div class="recommendation-grid">
+                    <div class="recommendation-card">
+                        <img src="images/overex.png" alt="Overextended">
+                        <h3>Overextended</h3>
+                        <a href="https://github.com/overextended" target="_blank" class="profile-btn">View Profile</a>
+                    </div>
+                    <div class="recommendation-card">
+                        <img src="images/okok.png" alt="OKOK">
+                        <h3>OKOK</h3>
+                        <a href="https://okok.tebex.io/" target="_blank" class="profile-btn">View Profile</a>
+                    </div>
+                    <div class="recommendation-card">
+                        <img src="images/gabz.png" alt="Gabz">
+                        <h3>Gabz</h3>
+                        <a href="https://www.gabzv.com/" target="_blank" class="profile-btn">View Profile</a>
+                    </div>
+                    <div class="recommendation-card">
+                        <img src="images/myscripts.png" alt="MyScripts">
+                        <h3>MyScripts</h3>
+                        <a href="https://shop.myscripts.eu/" target="_blank" class="profile-btn">View Profile</a>
+                    </div>
                 </div>
             </div>            
             
@@ -214,7 +330,10 @@ TriggerClientEvent("sc_textUI:hideUI", playerId)
                 </div>
 
                 <div id="script1-replace" class="version-content" data-search-terms="server version nodejs python backend">
-                    <div class="box tip"><i class="fas fa-lightbulb"></i><strong>Tip:</strong> If you have any problems with the installation, please contact our support team.</div>
+                    <div class="box tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <div><strong>Tip:</strong> If you have any problems with the installation, please contact our support team.</div>
+                      </div>
                     <p></p>
                     <h3>If you want to replace the standard ESX notification with ours, you need to change the following:</h3>
                     <p></p>
@@ -347,11 +466,17 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                 </div>
 
                 <div id="script3-client" class="version-content active">
-                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                    <div class="box info">
+                        <i class="fas fa-circle-info"></i>
+                        <div><strong>Info:</strong> No docs are currently available.</div>
+                      </div>
                 </div>
 
                 <div id="script3-server" class="version-content">
-                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                    <div class="box info">
+                        <i class="fas fa-circle-info"></i>
+                        <div><strong>Info:</strong> No docs are currently available.</div>
+                      </div>
                 </div>
             </div>
 
@@ -571,6 +696,28 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                     <p>There's nothing here yet.</p>
                 </div>
                 <!-- <div id="script13-server" class="version-content">
+                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
+                </div> -->
+            </div>
+
+            <div id="script14" class="page-content">
+                <h2>sc_animatedNPC <span class="tag">Standalone</span></h2>
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script14', 'client')">
+                        <i class="fas fa-desktop"></i> You caught us!
+                    </div>
+                    <!-- <div class="version-option" onclick="showVersion('script14', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div> -->
+                    <!-- <a class="version-option" href="https://github.com/ScubeScripts/sc_extinguisher" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a> -->
+                </div>
+
+                <div id="script14-client" class="version-content active">
+                    <p>There's nothing here yet.</p>
+                </div>
+                <!-- <div id="script14-server" class="version-content">
                     <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
                 </div> -->
             </div>

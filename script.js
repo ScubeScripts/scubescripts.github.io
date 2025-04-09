@@ -1,4 +1,4 @@
-// Navigation between pages
+// Navigation between pages 
 function showPage(pageId) {
     // Hide all pages
     document.querySelectorAll('.page-content').forEach(page => {
