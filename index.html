@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScubeScripts</title>
+    <title>ScubeScripts-Docs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -15,10 +15,12 @@
 <body>
     <header>
         <div class="header-content">
-            <div class="logo-section">
-                <img src="images/logo.png" alt="ScubeScripts Logo" class="site-logo">
-                <h1 class="main-title">ScubeScripts-Docs</h1> 
-            </div>
+            <a href="#home" class="logo-link" onclick="showPage('home')">
+                <div class="logo-section">
+                    <img src="images/logo.png" alt="ScubeScripts Logo" class="site-logo">
+                    <h1 class="main-title">ScubeScripts-Docs</h1> 
+                </div>
+            </a>
             <!-- <div class="search-section">
                 <div class="search-container">
                     <input type="text" placeholder="Search..." class="search-input">
@@ -34,6 +36,10 @@
         <div class="sidebar">
             <div class="nav-item active" onclick="showPage('home')">
                 <i class="fas fa-home"></i> Home
+            </div>
+            <div class="nav-item" onclick="showPage('script15')">
+                <i class="fas fa-comment-dots"></i> sc_notify
+                <span class="badge new">New</span>
             </div>
             <div class="nav-item" onclick="showPage('script1')">
                 <i class="fas fa-font"></i> sc_textUI
@@ -67,9 +73,11 @@
             </div>
             <div class="nav-item" onclick="showPage('script11')">
                 <i class="fas fa-car"></i> sc_cartax
+                <span class="badge new">1</span>
             </div>
             <div class="nav-item" onclick="showPage('script12')">
                 <i class="fas fa-mobile-screen"></i> sc_phonetax
+                <span class="badge new">1</span>
             </div>
             <div class="nav-item" onclick="showPage('script13')">
                 <i class="fas fa-fire-extinguisher"></i> sc_extinguisher
@@ -81,7 +89,7 @@
         
         <div class="content">
             <div id="home" class="page-content active">
-                <div class="box warning">
+                <div class="box danger">
                     <i class="fas fa-triangle-exclamation"></i>
                     <div><strong>Note:</strong> This page is not yet finished, there are still some errors in the system. If you find a mistake, please report it to us.</div>
                   </div>
@@ -184,18 +192,6 @@
                         </a>
                     </div>
                     <div class="project-card">
-                        <a href="https://github.com/ScubeScripts/sc_dumpster" target="_blank">
-                            <div class="project-info">
-                                <h3>sc_dumpster</h3>
-                                <p>Simple system for collecting waste.</p>
-                                <div class="project-stats">
-                                    <span><i class="fas fa-star"></i> 2</span>
-                                    <span><i class="fas fa-code-branch"></i> 0</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="project-card">
                         <a href="https://github.com/Lumpii404/sc_animatedNPC" target="_blank">
                             <div class="project-info">
                                 <h3>sc_animatedNPC</h3>
@@ -203,6 +199,18 @@
                                 <div class="project-stats">
                                     <span><i class="fas fa-star"></i> 4</span>
                                     <span><i class="fas fa-code-branch"></i> 2</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://github.com/ScubeScripts/sc_dumpster" target="_blank">
+                            <div class="project-info">
+                                <h3>sc_dumpster</h3>
+                                <p>Simple system for collecting waste.</p>
+                                <div class="project-stats">
+                                    <span><i class="fas fa-star"></i> 2</span>
+                                    <span><i class="fas fa-code-branch"></i> 0</span>
                                 </div>
                             </div>
                         </a>
@@ -449,33 +457,33 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                       </code></pre>
                     </div>
                 </div>
-            </div>
+        </div>
             
             <div id="script3" class="page-content"> 
                 <h2>sc_hud <span class="tag">ESX</span></h2>
                 <div class="version-selector">
-                    <div class="version-option active" onclick="showVersion('script3', 'client')">
-                        <i class="fas fa-desktop"></i> client.lua
+                    <div class="version-option active" onclick="showVersion('script3', 'html')">
+                        <i class="fab fa-html5"></i> ui.html
                     </div>
-                    <div class="version-option" onclick="showVersion('script3', 'server')">
-                        <i class="fas fa-server"></i> server.lua
+                    <div class="version-option" onclick="showVersion('script3', 'js')">
+                        <i class="fab fa-js"></i> script.js
                     </div>
                     <a class="version-option" href="https://github.com/ScubeScripts/sc_hud" target="_blank">
                         <i class="fas fa-download"></i> Download
                     </a>
                 </div>
 
-                <div id="script3-client" class="version-content active">
+                <div id="script3-html" class="version-content active">
                     <div class="box info">
                         <i class="fas fa-circle-info"></i>
-                        <div><strong>Info:</strong> No docs are currently available.</div>
+                        <div><strong>Info:</strong> Docs will be available soon.</div>
                       </div>
                 </div>
 
-                <div id="script3-server" class="version-content">
+                <div id="script3-js" class="version-content">
                     <div class="box info">
                         <i class="fas fa-circle-info"></i>
-                        <div><strong>Info:</strong> No docs are currently available.</div>
+                        <div><strong>Info:</strong> Docs will be available soon.</div>
                       </div>
                 </div>
             </div>
@@ -484,7 +492,7 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                 <h2>sc_taxsystem <span class="tag">ESX</span></h2>
                 <div class="version-selector">
                     <div class="version-option active" onclick="showVersion('script4', 'client')">
-                        <i class="fas fa-desktop"></i> You caught us!
+                        <i class="fas fa-hourglass-start"></i> You caught us!
                     </div>
                     <!-- <div class="version-option" onclick="showVersion('script4', 'server')">
                         <i class="fas fa-server"></i> server.lua
@@ -506,7 +514,7 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                 <h2>sc_licensemanager <span class="tag">ESX</span></h2>
                 <div class="version-selector">
                     <div class="version-option active" onclick="showVersion('script5', 'client')">
-                        <i class="fas fa-desktop"></i> You caught us!
+                        <i class="fas fa-hourglass-start"></i> You caught us!
                     </div>
                     <!-- <div class="version-option" onclick="showVersion('script5', 'server')">
                         <i class="fas fa-server"></i> server.lua
@@ -528,7 +536,7 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                 <h2>sc_dumpster <span class="tag">ESX</span></h2>
                 <div class="version-selector">
                     <div class="version-option active" onclick="showVersion('script6', 'client')">
-                        <i class="fas fa-desktop"></i> You caught us!
+                        <i class="fas fa-hourglass-start"></i> You caught us!
                     </div>
                     <!-- <div class="version-option" onclick="showVersion('script6', 'server')">
                         <i class="fas fa-server"></i> server.lua
@@ -550,7 +558,7 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                 <h2>sc_lawn <span class="tag">ESX</span></h2>
                 <div class="version-selector">
                     <div class="version-option active" onclick="showVersion('script7', 'client')">
-                        <i class="fas fa-desktop"></i> You caught us!
+                        <i class="fas fa-hourglass-start"></i> You caught us!
                     </div>
                     <!-- <div class="version-option" onclick="showVersion('script7', 'server')">
                         <i class="fas fa-server"></i> server.lua
@@ -572,7 +580,7 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                 <h2>sc_findatm <span class="tag">ESX</span></h2>
                 <div class="version-selector">
                     <div class="version-option active" onclick="showVersion('script8', 'client')">
-                        <i class="fas fa-desktop"></i> You caught us!
+                        <i class="fas fa-hourglass-start"></i> You caught us!
                     </div>
                     <!-- <div class="version-option" onclick="showVersion('script8', 'server')">
                         <i class="fas fa-server"></i> server.lua
@@ -594,7 +602,7 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                 <h2>sc_jobcenter <span class="tag">ESX</span></h2>
                 <div class="version-selector">
                     <div class="version-option active" onclick="showVersion('script9', 'client')">
-                        <i class="fas fa-desktop"></i> You caught us!
+                        <i class="fas fa-hourglass-start"></i> You caught us!
                     </div>
                     <!-- <div class="version-option" onclick="showVersion('script9', 'server')">
                         <i class="fas fa-server"></i> server.lua
@@ -616,7 +624,7 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                 <h2>sc_resell <span class="tag">ESX</span></h2>
                 <div class="version-selector">
                     <div class="version-option active" onclick="showVersion('script10', 'client')">
-                        <i class="fas fa-desktop"></i> You caught us!
+                        <i class="fas fa-hourglass-start"></i> You caught us!
                     </div>
                     <!-- <div class="version-option" onclick="showVersion('script10', 'server')">
                         <i class="fas fa-server"></i> server.lua
@@ -635,32 +643,70 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
             </div>
 
             <div id="script11" class="page-content">
-                <h2>sc_cartax <span class="tag">ESX</span></h2>
+                <h2>sc_cartax <span class="tag">ESX</span><span class="tag">QBCore</span></h2>
                 <div class="version-selector">
-                    <div class="version-option active" onclick="showVersion('script11', 'client')">
-                        <i class="fas fa-desktop"></i> You caught us!
-                    </div>
-                    <!-- <div class="version-option" onclick="showVersion('script11', 'server')">
-                        <i class="fas fa-server"></i> server.lua
+                    <!-- <div class="version-option active" onclick="showVersion('script11', 'client')">
+                        <i class="fas fa-hourglass-start"></i> client.lua
                     </div> -->
+                    <div class="version-option active" onclick="showVersion('script11', 'replace')">
+                        <i class="fas fa-i-cursor"></i> Replace
+                    </div>
                     <a class="version-option" href="https://github.com/ScubeScripts/sc_cartax" target="_blank">
                         <i class="fas fa-download"></i> Download
                     </a>
                 </div>
 
-                <div id="script11-client" class="version-content active">
+                <!-- <div id="script11-client" class="version-content active">
                     <p>There's nothing here yet.</p>
-                </div>
-                <!-- <div id="script11-server" class="version-content">
-                    <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
                 </div> -->
+                <div id="script11-replace" class="version-content active">
+                    <h3>If you want to use your own billing system you have to change the following:</h3>
+                    <p></p>
+                    <h4>Search for line 24 in sc_cartax/server/server.lua</h4>
+                    <p></p>
+                    <h4>Here is an example with myBills:
+                        Replaces line 24 with: TriggerEvent('myBills:gotAnswerForBill', xPlayer.source, xPlayer.source, 'society_police', 'Car Taxes', ESX.Math.Round(tax), true, true)
+                    </h4>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        <pre><code class="language-lua">
+if carCount > 0 then
+local tax = carCount * taxMultiplier
+if xPlayer ~= nil then
+    xPlayer.removeAccountMoney('bank', ESX.Math.Round(tax)) --Change this line
+    for _, notifyModule in ipairs(Config.Notify) do
+        if notifyModule.enabled then
+            local notificationText = Translation[Config.Locale]['text'] .. tax .. Translation[Config.Locale]['text1']
+            
+            if notifyModule.name == "ox_lib" then
+                notificationText = removeColorCodes(notificationText)
+            end
+
+            if notifyModule.name == "bulletin" then
+                TriggerClientEvent('bulletin:sendAdvanced')
+            elseif notifyModule.name == "default" then
+                TriggerClientEvent('cartax:picturemsg', xPlayer.source, Config.Char, notificationText, Config.Name, Translation[Config.Locale]['pay_text'])
+            elseif notifyModule.name == "ox_lib" then
+                TriggerClientEvent('ox_lib:notify', xPlayer.source, {
+                    title = Translation[Config.Locale]['pay_text'],
+                    description = notificationText,
+                    duration = 5000,
+                    icon = 'car'
+                })
+            end
+        end
+    end
+end
+                        </code></pre>
+                      </div>
+                </div>
             </div>
 
             <div id="script12" class="page-content">
                 <h2>sc_phonetax <span class="tag">ESX</span></h2>
                 <div class="version-selector">
                     <div class="version-option active" onclick="showVersion('script12', 'client')">
-                        <i class="fas fa-desktop"></i> You caught us!
+                        <i class="fas fa-hourglass-start"></i> You caught us!
                     </div>
                     <!-- <div class="version-option" onclick="showVersion('script12', 'server')">
                         <i class="fas fa-server"></i> server.lua
@@ -682,7 +728,7 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                 <h2>sc_extinguisher <span class="tag">ESX</span></h2>
                 <div class="version-selector">
                     <div class="version-option active" onclick="showVersion('script13', 'client')">
-                        <i class="fas fa-desktop"></i> You caught us!
+                        <i class="fas fa-hourglass-start"></i> You caught us!
                     </div>
                     <!-- <div class="version-option" onclick="showVersion('script13', 'server')">
                         <i class="fas fa-server"></i> server.lua
@@ -704,7 +750,7 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                 <h2>sc_animatedNPC <span class="tag">Standalone</span></h2>
                 <div class="version-selector">
                     <div class="version-option active" onclick="showVersion('script14', 'client')">
-                        <i class="fas fa-desktop"></i> You caught us!
+                        <i class="fas fa-hourglass-start"></i> You caught us!
                     </div>
                     <!-- <div class="version-option" onclick="showVersion('script14', 'server')">
                         <i class="fas fa-server"></i> server.lua
@@ -721,6 +767,97 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
                     <div class="box info"><i class="fas fa-circle-info"></i><strong>Info:</strong> No docs are currently available.</div>
                 </div> -->
             </div>
+
+            <div id="script15" class="page-content">
+                <h2>sc_notify <span class="tag">Standalone</span></h2>
+                
+                <div class="version-selector">
+                    <div class="version-option active" onclick="showVersion('script15', 'client')">
+                        <i class="fas fa-desktop"></i> client.lua
+                    </div>
+                    <div class="version-option" onclick="showVersion('script15', 'server')">
+                        <i class="fas fa-server"></i> server.lua
+                    </div>
+                    <a class="version-option" href="https://github.com/ScubeScripts/sc_notify" target="_blank">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+                
+                <div id="script15-client" class="version-content active">
+                    <h2>Notifications</h2>
+                    <h4>
+                        <li>title = "Custom-Notify"</li>
+                        <li>description = "Mit eigenem Icon & Position!"</li>
+                        <li>type = "info" --success, error, info, warning</li>
+                        <li>icon = You can use symbols from <a href="https://fontawesome.com/search?ic=free" target="_blank">FontAwesome</a> for custom messages</li>
+                        <li>iconColor = "#FF00FF"</li>
+                        <li>position = "top-right" --top, top-right, top-left, bottom, bottom-right, bottom-left, center-right, center-left </li>
+                        <li>Duration = 15000</li>
+                        <li>showDuration = false</li>
+                    </h4>
+
+                    <br>
+
+                    <h2>Example</h2>
+                    <h3>Standard</h3>
+                    <div class="code-block">
+                      <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                      <pre><code class="language-lua">
+exports['sc_notify']:notify({
+    title = "Standard-Notify", 
+    description = "This is a standard info!",
+    type = "info" --success, error, info, warning
+})
+                      </code></pre>
+                    </div>
+
+                    <h3>Coustom</h3>
+                    <div class="code-block">
+                      <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                      <pre><code class="language-lua">
+exports['sc_notify']:notify({
+    title = "Custom-Notify", 
+    description = "With custom icon & position!",
+    icon = "rocket",
+    iconColor = "#FF00FF",
+    position = "top-right",
+    Duration = 15000,
+    showDuration = false
+})
+                      </code></pre>
+                    </div>
+                </div>
+                
+                <div id="script15-server" class="version-content" data-search-terms="server version nodejs python backend">
+                <h3>Standard</h3>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                  <pre><code class="language-lua">
+TriggerClientEvent('sc_notify:notify', targetPlayerId, {
+    title = "Standard-Notify", 
+    description = "This is a standard info!",
+    type = "info" --success, error, info, warning
+})
+                  </code></pre>
+                </div>
+
+                <h3>Coustom</h3>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                  <pre><code class="language-lua">
+TriggerClientEvent('sc_notify:notify', targetPlayerId, {
+    title = "Custom-Notify", 
+    description = "With custom icon & position!",
+    icon = "rocket",
+    iconColor = "#FF00FF",
+    position = "top-right",
+    Duration = 15000,
+    showDuration = false
+})
+                  </code></pre>
+                </div>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -730,9 +867,9 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
             <a href="https://github.com/ScubeScripts" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://discord.gg/Mqgewse03Yc" class="social-link" target="_blank"><i class="fab fa-discord"></i></a>
             <a href="https://www.youtube.com/@ScubeScripts" class="social-link" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://forum.cfx.re/u/scubescripts/summary" class="social-link" target="_blank"><i class="fab fa-v"></i></a>
+            <a href="https://www.instagram.com/ScubeScripts" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
-        <div class="copyright">© 2022 ScubeScripts. All rights reserved.</div>
+        <div class="copyright">© 2021-2025 ScubeScripts. All rights reserved.</div>
     </footer>    
 
     <script src="script.js"></script>

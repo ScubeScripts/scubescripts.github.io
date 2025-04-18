@@ -1,20 +1,35 @@
 // Navigation between pages 
 function showPage(pageId) {
-    // Hide all pages
+    // Entferne die 'active'-Klasse von allen Seiten
     document.querySelectorAll('.page-content').forEach(page => {
         page.classList.remove('active');
     });
-    
-    // Show selected page
+
+    // Zeige die gewünschte Seite an
     document.getElementById(pageId).classList.add('active');
-    
-    // Mark active nav-item
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active');
+
+    // Entferne die 'active'-Klasse von allen Navigationselementen
+    document.querySelectorAll('.nav-item').forEach(navItem => {
+        navItem.classList.remove('active');
     });
-    
-    event.currentTarget.classList.add('active');
+
+    // Setze die 'active'-Klasse für das entsprechende Navigationselement
+    document.querySelector(`.nav-item[onclick="showPage('${pageId}')"]`).classList.add('active');
+
+    // Scrolle zum Anfang der Seite
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Event-Listener für das Logo im Header
+    const logo = document.querySelector('.header-logo'); // Passe den Selektor an, falls nötig
+    if (logo) {
+        logo.addEventListener('click', function() {
+            showPage('home'); // 'home' ist die ID der Home-Seite
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+});
 
 // Script version display
 function showScriptDescription(scriptId, version) {
