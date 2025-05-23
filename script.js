@@ -1,4 +1,4 @@
-// Navigation between pages 
+// Navigation between pages   
 function showPage(pageId) {
     // Entferne die 'active'-Klasse von allen Seiten
     document.querySelectorAll('.page-content').forEach(page => {
