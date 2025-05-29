@@ -666,7 +666,7 @@ TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")
 if carCount > 0 then
 local tax = carCount * taxMultiplier
 if xPlayer ~= nil then
-    xPlayer.removeAccountMoney('bank', ESX.Math.Round(tax)) --Change this line
+    xPlayer.removeAccountMoney('bank', ESX.Math.Round(tax)) -- Change this line
     for _, notifyModule in ipairs(Config.Notify) do
         if notifyModule.enabled then
             local notificationText = Translation[Config.Locale]['text'] .. tax .. Translation[Config.Locale]['text1']
@@ -777,6 +777,10 @@ end
                 </div>
                 
                 <div id="script15-client" class="version-content active">
+                    <div class="box info">
+                      <i class="fas fa-circle-info"></i>
+                      <div><strong>Info:</strong> A new version is on the way!</div>
+                    </div>
                     <h2>Notifications</h2>
                     <h4>
                         <li>title = "Custom-Notify"</li>
