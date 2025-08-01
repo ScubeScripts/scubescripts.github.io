@@ -538,14 +538,18 @@ footer {
 
 .team-card {
     display: flex;
+    flex-direction: column; /* Stack image and content vertically */
+    align-items: center;    /* Center everything horizontally */
+    justify-content: flex-start;
     background-color: var(--dark-header-bg);
     border-radius: 16px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     overflow: hidden;
     width: 400px;
     max-width: 100%;
-    padding: 20px;
-    align-items: center;
+    min-height: 220px;      /* Ensures equal height */
+    padding: 30px 20px 20px 20px; /* More top padding for image */
+    box-sizing: border-box;
 }
 
 .team-card img {
@@ -553,17 +557,21 @@ footer {
     height: 120px;
     object-fit: cover;
     border-radius: 50%;
-    margin-right: 20px;
+    margin-bottom: 18px;    /* Use bottom margin instead of right */
     border: 3px solid #333;
+    display: block;
 }
 
 .card-content {
     color: #fff;
+    text-align: center;     /* Center text */
+    width: 100%;
 }
 
 .card-content h3 {
-    margin: 0 0 10px;
+    margin: 0 0 10px 0;
     font-size: 1.5em;
+    line-height: 1.2;
 }
 
 .card-content p {
@@ -571,6 +579,10 @@ footer {
     font-size: 1em;
     line-height: 1.4;
     color: #ccc;
+    min-height: 48px;       /* Ensures consistent spacing for short/long text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
   /* Best of Boxen */
   .project-card {
@@ -785,4 +797,52 @@ footer {
     margin-left: 8px;
     display: inline-block;
     vertical-align: middle;
+}
+
+/* Neon Gradient Name */
+.neon-gradient-name {
+    background: linear-gradient(90deg, #4895ef, #4361ee, #0072ff);
+    background-size: 200%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: bold;
+    text-shadow:
+        0 0 2px #4895ef,
+        0 0 6px #4361ee,
+        0 0 12px #0072ff33;
+    animation: neon-move 3s linear infinite;
+}
+
+.neon-gradient-skull {
+    background: linear-gradient(90deg, #ff6a00, #ffb347, #ffd700);
+    background-size: 200%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: bold;
+    text-shadow:
+        0 0 2px #ffb347,
+        0 0 6px #ff6a00,
+        0 0 12px #ffd70055;
+    animation: neon-move 3s linear infinite;
+}
+
+.neon-gradient-proto {
+    background: linear-gradient(90deg, #43e97b, #38f9d7, #00c3ff);
+    background-size: 200%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: bold;
+    text-shadow:
+        0 0 2px #38f9d7,
+        0 0 6px #43e97b,
+        0 0 12px #00c3ff55;
+    animation: neon-move 3s linear infinite;
+}
+
+@keyframes neon-move {
+    0% { background-position: 0% }
+    100% { background-position: 200% }
 }
