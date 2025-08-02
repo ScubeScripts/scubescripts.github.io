@@ -1,20 +1,20 @@
 :root {  
-    --primary: #4361ee;
-    --secondary: #3f37c9;
-    --accent: #4895ef;
-    --dark: #e0e0e0;
-    --light: #f8f9fa;
+    --primary: #5a8dee; /* Helleres Blau */
+    --secondary: #3f5fc9; /* Etwas heller */
+    --accent: #7ab8fa; /* Hellerer Akzent */
+    --dark: #e8eaf6; /* Helles Grau für Text */
+    --light: #f4f6fa;
     --success: #4cc9f0;
     --new: #e74c3c;
-    --text: #e0e0e0;
+    --text: #e8eaf6;
 
     /* Dark Mode */
-    --dark-bg: #121212;
-    --dark-text: #e0e0e0;
-    --dark-header-bg: #1e1e1e;
-    --dark-sidebar-bg: #1a1a1a;
-    --dark-content-bg: #222222;
-    --dark-footer-bg: #2b2d42;
+    --dark-bg: #23293a; /* Helleres Dunkelblau/Grau */
+    --dark-text: #e8eaf6;
+    --dark-header-bg: #2d3448; /* Hellerer Header */
+    --dark-sidebar-bg: #2a3140; /* Hellerer Sidebar */
+    --dark-content-bg: #31384a; /* Hellerer Content */
+    --dark-footer-bg: #38405a; /* Hellerer Footer */
 }
 
 * {
@@ -38,7 +38,7 @@ header {
     padding: 2rem 0;
     margin-bottom: 20px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
+    color: var(--dark);
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
 }
@@ -195,7 +195,7 @@ header {
 .content {
     flex: 1;
     padding: 2rem;
-    background-color: var(--dark-sidebar-bg);
+    background-color: var(--dark-bg);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     border: 1px solid rgba(0,0,0,0.05);
@@ -221,7 +221,7 @@ header {
 
 .nav-item.active {
     background: linear-gradient(90deg, var(--primary), var(--accent));
-    color: white;
+    color: var(--dark);
     font-weight: 600;
     box-shadow: 0 2px 8px rgba(67, 97, 238, 0.3);
 }
@@ -242,7 +242,7 @@ header {
 
 h2 {
     margin-bottom: 1.5rem;
-    color: var(--dark);
+    color: var(--primary);
     font-size: 1.8rem;
     position: relative;
     padding-bottom: 10px;
@@ -260,14 +260,14 @@ h2::after {
 }
 
 p {
+    color: var(--text);
     line-height: 1.7;
     margin-bottom: 1.2rem;
-    color: var(--text);
 }
 
 footer {
     background-color: var(--dark-footer-bg);
-    color: white;
+    color: var(--dark);
     padding: 1.5rem;
     border-radius: 12px;
     text-align: center;
@@ -282,7 +282,7 @@ footer {
 }
 
 .social-link {
-    color: white;
+    color: var(--primary);
     font-size: 1.8rem;
     transition: all 0.3s ease;
 }
@@ -301,6 +301,7 @@ footer {
     margin-top: 15px;
     font-size: 0.9rem;
     opacity: 0.8;
+    color: var(--dark);
 }
 
 .script-option {
@@ -398,8 +399,8 @@ footer {
     cursor: pointer;
     border-radius: 6px 6px 0 0;
     font-weight: 500;
-    background-color: #3b3e5d44;
-    color: white;
+    background-color: #3b4a6a44; /* Helleres Blau/Grau */
+    color: var(--dark);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -407,13 +408,13 @@ footer {
 }
 
 .version-option:hover {
-    background-color: #2b2d42;
-    color: white;
+    background-color: #38405a;
+    color: var(--accent);
 }
 
 .version-option.active {
     background-color: var(--primary);
-    color: white;
+    color: var(--dark);
     box-shadow: 0 2px 5px rgba(67, 97, 238, 0.2);
 }
 
@@ -439,48 +440,51 @@ footer {
     display: inline-flex;
     align-items: flex-start;
     gap: 8px;
-    padding: 8px 10px;
+    padding: 12px 18px;
     border-left: 4px solid;
-    border-radius: 6px;
-    margin: 6px 0;
+    border-radius: 12px;
+    margin: 10px 0;
     font-family: sans-serif;
-    font-size: 14px;
-  }  
-  
-  .box i {
-    font-size: 16px;
-    margin-top: 2px;
-  }
-  
-  .info {
-    background: #ddf4ff;
-    border-color: #0969da;
-    color: #074a9c;
-  }
-  
-  .note {
-    background: #f6f8fa;
-    border-color: #57606a;
-    color: #3c3f44;
-  }
-  
-  .tip {
-    background: #dafbe1;
-    border-color: #1a7f37;
-    color: #145c2a;
-  }
-  
-  .warning {
-    background: #fff8c5;
-    border-color: #9a6700;
-    color: #7a4e00;
-  }
-  
-  .danger {
-    background: #ffeef0;
-    border-color: #d1242f;
-    color: #9a1b24;
-  }
+    font-size: 15px;
+    color: var(--dark);
+    box-shadow: 0 4px 24px rgba(90, 141, 238, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: box-shadow 0.2s, background 0.2s;
+}
+
+.box i {
+    font-size: 18px;
+    margin-top: 0; /* entfernt die Verschiebung */
+    align-self: center; /* vertikal mittig */
+    opacity: 0.8;
+}
+
+/* Individuelle transparente Hintergrundfarbe je Box-Typ */
+.info {
+    border-color: #5a8dee;
+    background: rgba(90, 141, 238, 0.18); /* leichtes Blau, transparent */
+}
+
+.note {
+    border-color: #7ab8fa;
+    background: rgba(122, 184, 250, 0.18); /* helles Blau, transparent */
+}
+
+.tip {
+    border-color: #43e97b;
+    background: rgba(67, 233, 123, 0.18); /* grünlich, transparent */
+}
+
+.warning {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.18); /* gelb, transparent */
+}
+
+.danger {
+    border-color: #e74c3c;
+    background: rgba(231, 76, 60, 0.18); /* rot, transparent */
+}
 
 /* Code-Blöcke für Lua Code */
 
@@ -496,7 +500,8 @@ footer {
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #2B2B2B;
-    background: #f6f8fa;
+    background: #f4f6fa;
+    color: #23293a;
     overflow-x: auto;
     max-width: 100%;
     box-sizing: border-box;
@@ -507,7 +512,8 @@ footer {
     position: absolute;
     top: 8px;
     right: 8px;
-    background: #f6f8fa;
+    background: #e8eaf6;
+    color: #23293a;
     border: 1px solid #d0d7de;
     border-radius: 6px;
     padding: 4px 8px;
@@ -520,7 +526,8 @@ footer {
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #2B2B2B;
-    background: #f6f8fa;
+    background: #f4f6fa;
+    color: #23293a;
     overflow-x: auto;
     max-width: 100%;
     box-sizing: border-box;
@@ -563,7 +570,7 @@ footer {
 }
 
 .card-content {
-    color: #fff;
+    color: var(--primary);
     text-align: center;     /* Center text */
     width: 100%;
 }
@@ -578,7 +585,7 @@ footer {
     margin: 0;
     font-size: 1em;
     line-height: 1.4;
-    color: #ccc;
+    color: var(--dark);
     min-height: 48px;       /* Ensures consistent spacing for short/long text */
     display: flex;
     align-items: center;
@@ -587,7 +594,7 @@ footer {
   /* Best of Boxen */
   .project-card {
     position: relative;
-    background: #1e1e1e;
+    background: #2d3448;
     border-radius: 12px;
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -607,8 +614,7 @@ footer {
 }
 
 .project-card:before {
-    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, 
-        #0000ff, #00ff00, #ffff00, #ff0000);
+    background: linear-gradient(45deg, #7ab8fa, #5a8dee, #43e97b, #ffd700, #e74c3c, #7ab8fa, #5a8dee, #43e97b, #ffd700, #e74c3c);
     background-size: 400%;
     animation: steam 20s linear infinite;
 }
@@ -663,12 +669,12 @@ footer {
 .project-info h3 {
     margin: 0 0 10px;
     font-size: 1.2em;
-    color: #fff;
+    color: var(--primary);
 }
 
 .project-info p {
     font-size: 0.9em;
-    color: #ccc;
+    color: var(--dark);
     margin-bottom: 10px;
 }
 
@@ -676,7 +682,7 @@ footer {
     display: flex;
     justify-content: space-between;
     font-size: 0.9em;
-    color: #aaa;
+    color: var(--accent);
 }
 
 .project-stats span {
@@ -725,7 +731,7 @@ footer {
 }
 
 .recommendation-card {
-    background: #1e1e1e;
+    background: #2d3448;
     border-radius: 12px;
     padding: 20px;
     text-align: center;
@@ -751,14 +757,14 @@ footer {
 .recommendation-card h3 {
     margin: 10px 0;
     font-size: 1.2em;
-    color: #fff;
+    color: var(--primary);
 }
 
 .profile-btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: var(--primary);
-    color: white;
+    background-color: var(--accent);
+    color: var(--dark-bg);
     text-decoration: none;
     border-radius: 6px;
     font-weight: 500;
@@ -766,7 +772,8 @@ footer {
 }
 
 .profile-btn:hover {
-    background-color: var(--secondary);
+    background-color: var(--primary);
+    color: var(--dark);
     transform: translateY(-2px);
 }
 
@@ -776,7 +783,7 @@ footer {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    background-color: #515a5a;
+    background-color: #5a8dee;
     color: #f4f6f7;
     font-size: 0.5em;
     padding: 2px 6px;
@@ -789,7 +796,7 @@ footer {
 /* Badge Styling */
 .badge.new {
     background-color: var(--new);
-    color: white;
+    color: var(--dark);
     font-size: 0.7rem;
     font-weight: bold;
     padding: 2px 6px;
@@ -801,7 +808,7 @@ footer {
 
 /* Neon Gradient Name */
 .neon-gradient-name {
-    background: linear-gradient(90deg, #4895ef, #4361ee, #0072ff);
+    background: linear-gradient(90deg, #7ab8fa, #5a8dee, #4895ef);
     background-size: 200%;
     color: transparent;
     -webkit-background-clip: text;
@@ -815,7 +822,7 @@ footer {
 }
 
 .neon-gradient-skull {
-    background: linear-gradient(90deg, #ff6a00, #ffb347, #ffd700);
+    background: linear-gradient(90deg, #ffb347, #ffd700, #5a8dee);
     background-size: 200%;
     color: transparent;
     -webkit-background-clip: text;
@@ -829,7 +836,7 @@ footer {
 }
 
 .neon-gradient-proto {
-    background: linear-gradient(90deg, #43e97b, #38f9d7, #00c3ff);
+    background: linear-gradient(90deg, #43e97b, #7ab8fa, #5a8dee);
     background-size: 200%;
     color: transparent;
     -webkit-background-clip: text;
