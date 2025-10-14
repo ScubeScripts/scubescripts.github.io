@@ -1,1 +1,3 @@
-# scubescripts.github.io
+# Version 2 is coming soon, just a few more days...
+
+<img width="1920" height="1080" alt="Scube" src="https://github.com/user-attachments/assets/cce5e23e-8e2b-4e96-b879-a08f7329b76a" />
