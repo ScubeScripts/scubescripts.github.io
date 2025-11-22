@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ScubeScripts — Introduction</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    pre { white-space: pre-wrap; }
+    .sidebar-scroll { max-height: calc(100vh - 96px); overflow:auto }
+    aside {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      z-index: 20;
+    }
+    .doc-content::-webkit-scrollbar { height: 8px; }
+    .hero {
+      border-radius: .75rem;
+      padding: 2rem;
+      background: linear-gradient(180deg, rgba(99,102,241,0.08), rgba(236,72,153,0.03));
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.25);
+      margin-bottom: 1rem;
+    }
+    .hero-left { max-width: 70%; }
+    .hero-title { color: rgba(99,102,241,1); font-size: 1.5rem; font-weight:700; margin-bottom:.25rem; }
+    .hero-sub { color: rgba(203,213,225,1); margin-bottom: .75rem; }
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:.6rem;
+      background: linear-gradient(90deg,#6366f1,#ec4899);
+      color:white; padding:.6rem .9rem; border-radius:.6rem; font-weight:600;
+      box-shadow: 0 8px 30px rgba(99,102,241,0.12);
+      transition: transform .18s ease, box-shadow .18s ease, filter .12s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(99,102,241,0.18), 0 6px 24px rgba(236,72,153,0.08);
+      filter: saturate(1.05);
+    }
+    .btn-primary:active { transform: translateY(-2px) scale(.995); }
+    .btn-primary:focus { outline: 3px solid rgba(99,102,241,0.12); outline-offset: 4px; }
+    .btn-ghost {
+      display:inline-flex; align-items:center; gap:.5rem;
+      border:1px solid rgba(148,163,184,0.14); color:#cbd5e1; padding:.5rem .75rem; border-radius:.6rem;
+      background:transparent; transition: background .15s, transform .15s;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.03);
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 12px 30px rgba(2,6,23,0.32);
+    }
+    .btn-ghost:active { transform: translateY(-1px) scale(.997); }
+    .btn-ghost:focus { outline: 2px solid rgba(148,163,184,0.10); outline-offset: 3px; }
+    .card {
+      border-radius:.65rem; padding:1rem; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s, border-color .22s;
+      border:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(4px);
+    }
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(2,6,23,0.55), 0 6px 22px rgba(99,102,241,0.08);
+      border-color: rgba(99,102,241,0.16);
+    }
+    .project-outer { border-radius: 0.5rem; padding: 1px; transition: background .22s, box-shadow .22s; }
+    .project-inner {
+      border-radius: 0.5rem; background-color: rgba(17,24,39,0.6); padding: 1rem; height:100%;
+      transition: transform .30s, box-shadow .30s, background-color .24s; display:flex; flex-direction:column;
+    }
+    .project-outer:hover .project-inner {
+      transform: translateY(-12px) scale(1.05);
+      box-shadow: 0 30px 70px rgba(2,6,23,0.7);
+      background-color: rgba(17,24,39,0.82);
+    }
+    .project-outer:hover {
+      background: linear-gradient(90deg, rgba(99,102,241,0.28), rgba(236,72,153,0.22), rgba(234,179,8,0.18));
+    }
+    .project-title { transition: color .18s, text-shadow .18s; color: #c7d2fe; }
+    .project-outer:hover .project-title { color: #fff; text-shadow: 0 10px 30px rgba(99,102,241,0.18); }
+    .meta i { transition: color .18s, transform .18s; color: #94a3b8; }
+    .project-outer:hover .meta i.fa-star { color:#facc15; transform: translateY(-2px) scale(1.05); filter: drop-shadow(0 8px 20px rgba(250,204,21,0.12)); }
+    .project-outer:hover .meta i.fa-code-branch { color:#60a5fa; transform: translateY(-2px) scale(1.03); filter: drop-shadow(0 8px 20px rgba(96,165,250,0.08)); }
+    .rec-grid { display: grid; grid-template-columns: repeat(1, minmax(0,1fr)); gap: 1.5rem; justify-items:center; padding-inline: .5rem; }
+    @media (min-width: 640px) { .rec-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (min-width: 1024px) { .rec-grid { grid-template-columns: repeat(4, minmax(0,1fr)); } }
+    .rec-card {
+      display:flex; flex-direction:column; align-items:center; text-align:center;
+      gap:0.75rem; padding:1rem; border-radius:0.6rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      border:1px solid rgba(255,255,255,0.03);
+      transition: transform .18s ease, box-shadow .18s ease;
+      max-width: 20rem; width:100%; margin: 0 auto; min-height: 14.5rem;
+      display:flex; justify-content:space-between; flex-wrap:nowrap;
+    }
+    .rec-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(2,6,23,0.45); border-color: rgba(99,102,241,0.10); }
+    .rec-card .logo { width:72px; height:72px; object-fit:contain; border-radius:0.4rem; }
+    .rec-card .rec-title { font-weight:700; color:#c7d2fe; font-size:1rem; margin-top:.25rem; }
+    .rec-card .rec-desc { font-size:0.9rem; color:#9ca3af; max-width:16rem; line-height:1.25; margin-bottom:.25rem; }
+    .rec-meta { display:flex; gap:.5rem; align-items:center; color:#94a3b8; font-size:.82rem; margin-top:.25rem; justify-content:center; }
+    .rec-cta {
+      margin-top:0.5rem; padding:.5rem .75rem; font-size:.9rem; border-radius:.5rem; text-decoration:none; display:inline-flex; gap:.5rem; align-items:center;
+      transition: transform .16s ease, box-shadow .14s, opacity .12s;
+    }
+    .rec-cta.primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(99,102,241,0.12);
+      opacity: 0.995;
+    }
+    .rec-cta.primary:active { transform: translateY(-2px) scale(.995); }
+    aside ul li a.active {
+      background: rgba(99,102,241,0.12);
+      color: #fff;
+      font-weight: 600;
+      border-radius: .5rem;
+      box-shadow: inset 0 0 0 1px rgba(99,102,241,0.06);
+    }
+    aside nav ul li a {
+      color: inherit;
+      transition: background .14s ease, color .12s ease, transform .12s ease;
+    }
+    aside nav ul li a:hover,
+    aside nav ul li a:focus {
+      background: rgba(255,255,255,0.03);
+      color: #fff;
+      transform: translateY(-2px);
+      outline: none;
+    }
+    @media (max-width: 768px) {
+      .hero { flex-direction:column; align-items:flex-start; gap:1rem; }
+      .hero-left { max-width:100%; }
+    }
+    .btn-primary {
+      transition: transform .18s ease, box-shadow .18s ease, filter .12s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(99,102,241,0.18), 0 6px 24px rgba(236,72,153,0.08);
+      filter: saturate(1.05);
+    }
+    .btn-primary:active { transform: translateY(-2px) scale(.995); }
+    .btn-primary:focus { outline: 3px solid rgba(99,102,241,0.12); outline-offset: 4px; }
+    .btn-ghost {
+      transition: transform .15s, background .12s, box-shadow .12s;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.03);
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 12px 30px rgba(2,6,23,0.32);
+    }
+    .btn-ghost:active { transform: translateY(-1px) scale(.997); }
+    .btn-ghost:focus { outline: 2px solid rgba(148,163,184,0.10); outline-offset: 3px; }
+    .rec-cta {
+      transition: transform .16s ease, box-shadow .14s, opacity .12s;
+    }
+    .rec-cta.primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(99,102,241,0.12);
+      opacity: 0.995;
+    }
+    .rec-cta.primary:active { transform: translateY(-2px) scale(.995); }
+    .rec-links a {
+      transition: transform .12s, background .12s, color .12s;
+      display:inline-flex; align-items:center; justify-content:center;
+    }
+    .rec-links a:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.03);
+      color: #fff;
+    }
+    .card a {
+      transition: transform .12s, color .12s, background .12s;
+      border-radius: .35rem; padding:.12rem;
+    }
+    .card a:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.02);
+      color: #fff;
+    }
+    .sidebar-scroll .fa-github:hover { color: #4078c0 !important; }
+    .sidebar-scroll .fa-twitter:hover { color: #1da1f2 !important; }
+    .sidebar-scroll .fa-discord:hover { color: #5865f2 !important; }
+    .sidebar-scroll .fa-youtube:hover { color: #ff0000 !important; }
+  </style>
+</head>
+
+<body class="antialiased bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800 text-gray-100">
+  <div class="min-h-screen flex">
+    <aside class="w-72 border-r bg-gray-800 border-gray-700 text-gray-100 hidden md:block">
+      <div class="p-4 dark:border-gray-700 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="images/logo.png" alt="ScubeScripts" class="w-10 h-10 rounded-lg object-cover" />
+          <div>
+            <div class="font-semibold">ScubeScripts</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">Docs & Guides</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-3">
+        <input id="search" placeholder="Search..." class="w-full rounded px-3 py-2 border border-gray-700 bg-gray-800 text-sm text-gray-200 focus:outline-none" />
+      </div>
+
+      <nav class="p-3 sidebar-scroll">
+        <ul id="sidebarList" class="space-y-1 text-sm">
+          <li><a href="index.html" class="block px-3 py-2 rounded">Introduction</a></li>
+          <li><a href="installation.html" class="block px-3 py-2 rounded">Installation</a></li>
+          <li><a href="sc_notify.html" class="block px-3 py-2 rounded">sc_notify</a></li>
+          <li><a href="sc_textui.html" class="block px-3 py-2 rounded">sc_textUI</a></li>
+          <li><a href="sc_progress.html" class="block px-3 py-2 rounded">sc_progress</a></li>
+          <li><a href="sc_cartax.html" class="block px-3 py-2 rounded">sc_cartax</a></li>
+          <li><a href="faq.html" class="block px-3 py-2 rounded">FAQ</a></li>
+          <li><a href="changelog.html" class="block px-3 py-2 rounded">Changelog</a></li>
+        </ul>
+      </nav>
+
+      <div class="p-4">
+        <div class="text-sm text-gray-400 mb-2">Follow ScubeScripts</div>
+        <div class="flex items-center gap-3">
+          <a href="https://github.com/ScubeScripts" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-github fa-lg"></i>
+          </a>
+          <a href="https://twitter.com/ScubeScripts" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-twitter fa-lg"></i>
+          </a>
+          <a href="https://discord.gg/Mqgewse03Yc" target="_blank" rel="noopener noreferrer" aria-label="Discord" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-discord fa-lg"></i>
+          </a>
+          <a href="https://www.youtube.com/@ScubeScripts" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-youtube fa-lg"></i>
+          </a>
+          <a href="https://forum.cfx.re/u/scubescripts/summary" target="_blank" rel="noopener noreferrer" aria-label="Cfx.re" class="text-gray-300 hover:text-white">
+            <i class="fas fa-car fa-lg"></i>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-6 doc-content">
+      <header class="flex items-center justify-between mb-6">
+        <div>
+          <h1 id="pageTitle" class="text-2xl font-bold">ScubeScripts Docs</h1>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="mobileMenuBtn" class="md:hidden p-2 rounded border border-gray-200 dark:border-gray-700 flex items-center gap-2">
+            <i class="fa-solid fa-bars"></i>
+            <span>Menu</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="hero">
+        <div class="hero-left">
+          <div class="hero-title">Welcome to ScubeScripts</div>
+          <div class="hero-sub">Modular FiveM scripts — well documented, easily customizable. Start with installation or browse our best-of projects.</div>
+          <div class="flex items-center gap-3">
+            <a href="installation.html" class="btn-primary"><i class="fa-solid fa-rocket"></i><span>Get Started</span></a>
+            <a href="#best-projects" class="btn-ghost"><i class="fa-solid fa-star"></i><span>Our best</span></a>
+          </div>
+        </div>
+        <div class="hero-right hidden md:block">
+          <img src="images/logo.png" alt="hero" style="width:150px;opacity:.95"/>
+        </div>
+      </div>
+
+        <section id="intro" class="mb-8">
+          <h2 class="text-3xl font-extrabold text-blue-400 mb-3">Introduction</h2>
+          <div class="max-w-3xl space-y-4">
+            <p class="text-lg text-gray-300 leading-relaxed">
+              ScubeScripts is a collective of designers and developers building modular, NUI-ready scripts for FiveM.
+              Our goal is to ship maintainable, secure and performant systems that are easy to integrate into your server.
+            </p>
+            <p class="text-base text-gray-400 leading-relaxed">
+              This documentation contains setup instructions, API references and examples for all official ScubeScripts projects.
+              Each project page includes installation steps, configuration options and quick usage snippets so you can get running fast.
+            </p>
+            <p class="text-base text-gray-400">
+              Need help? Start with the Installation guide, or browse the Examples section for ready-to-use snippets and demos.
+            </p>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h3 class="text-2xl font-bold text-blue-400 mb-4">Our Team</h3>
+          <p class="text-base text-gray-300 max-w-3xl mb-6 leading-relaxed">
+            A small, focused team of frontend and backend developers. We prioritize clarity, performance, and community-first design.
+            Below are the core contributors and their roles — click a profile to view projects and contributions.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="card flex flex-col items-center text-center p-6">
+              <img id="lumpii-img" data-lumpii class="w-24 h-24 rounded-full mb-4" src="images/lumpii.png" alt="Lumpii">
+              <div class="font-semibold text-xl text-blue-200">Lumpii</div>
+              <div class="text-sm text-gray-400 mt-2">Founder & frontend lead</div>
+              <div class="mt-3 flex items-center justify-center gap-3">
+                <a href="https://github.com/lumpii404" class="text-gray-300 hover:text-white" target="_blank" rel="noopener noreferrer" aria-label="Lumpii GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.twitch.tv/lumpii_tv" class="text-gray-300 hover:text-white" target="_blank" rel="noopener noreferrer" aria-label="Lumpii Twitch"><i class="fa-brands fa-twitch"></i></a>
+                <a href="https://www.youtube.com/@lumpii_tv" class="text-gray-300 hover:text-white" target="_blank" rel="noopener noreferrer" aria-label="Lumpii YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://discord.gg/5gKAtJFUD9" class="text-gray-300 hover:text-white" target="_blank" rel="noopener noreferrer" aria-label="Lumpii Discord"><i class="fa-brands fa-discord"></i></a>
+              </div>
+            </div>
+
+            <div class="card flex flex-col items-center text-center p-6">
+              <img class="w-24 h-24 rounded-full mb-4" src="images/logo.png" alt="?">
+              <div class="font-semibold text-xl text-yellow-400">???</div>
+              <div class="text-sm text-gray-400 mt-2">Developer wanted</div>
+              <div class="mt-3 flex items-center justify-center gap-3">
+                <!-- <a href="https://github.com/" class="text-gray-300 hover:text-white" target="_blank" rel="noopener noreferrer" aria-label=" GitHub"><i class="fa-brands fa-github"></i></a> -->
+              </div>
+            </div>
+
+            <div class="card flex flex-col items-center text-center p-6">
+              <img class="w-24 h-24 rounded-full mb-4" src="images/logo.png" alt="?">
+              <div class="font-semibold text-xl text-green-300">???</div>
+              <div class="text-sm text-gray-400 mt-2">Developer wanted</div>
+              <div class="mt-3 flex items-center justify-center gap-3">
+                <!-- <a href="https://github.com/" class="text-gray-300 hover:text-white" target="_blank" rel="noopener noreferrer" aria-label=" GitHub"><i class="fa-brands fa-github"></i></a> -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="best-projects">
+          <h3 class="text-2xl font-bold text-blue-400 mb-4">Our Best Projects</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="project-outer">
+              <div class="project-inner text-sm">
+                <div class="flex items-center gap-2">
+                  <div class="font-semibold project-title text-blue-200">sc_hud</div>
+                  <a href="https://github.com/ScubeScripts/sc_hud" target="_blank" rel="noopener noreferrer" aria-label="sc_hud GitHub" class="text-gray-300 hover:text-white">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                </div>
+                <div class="text-xs text-gray-400 mt-2">A modern HUD for FiveM.</div>
+                <div class="flex items-center justify-between mt-3 text-xs text-gray-400 meta">
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-star"></i>16</span>
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-code-branch"></i>5</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-outer">
+              <div class="project-inner text-sm">
+                <div class="flex items-center gap-2">
+                  <div class="font-semibold project-title text-blue-200">sc_taxsystem</div>
+                  <a href="https://github.com/ScubeScripts/sc_taxsystem" target="_blank" rel="noopener noreferrer" aria-label="sc_taxsystem GitHub" class="text-gray-300 hover:text-white">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                </div>
+                <div class="text-xs text-gray-400 mt-2">An advanced tax system for FiveM.</div>
+                <div class="flex items-center justify-between mt-3 text-xs text-gray-400 meta">
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-star"></i>16</span>
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-code-branch"></i>3</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-outer">
+              <div class="project-inner text-sm">
+                <div class="flex items-center gap-2">
+                  <div class="font-semibold project-title text-blue-200">sc_licensemanager</div>
+                  <a href="https://github.com/ScubeScripts/sc_licensemanager" target="_blank" rel="noopener noreferrer" aria-label="sc_licensemanager GitHub" class="text-gray-300 hover:text-white">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                </div>
+                <div class="text-xs text-gray-400 mt-2">Simple script for managing licenses.</div>
+                <div class="flex items-center justify-between mt-3 text-xs text-gray-400 meta">
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-star"></i>12</span>
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-code-branch"></i>2</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-outer">
+              <div class="project-inner text-sm">
+                <div class="flex items-center gap-2">
+                  <div class="font-semibold project-title text-blue-200">sc_textUI</div>
+                  <a href="https://github.com/ScubeScripts/sc_textUI" target="_blank" rel="noopener noreferrer" aria-label="sc_textUI GitHub" class="text-gray-300 hover:text-white">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                </div>
+                <div class="text-xs text-gray-400 mt-2">A Clean and Modern textUI.</div>
+                <div class="flex items-center justify-between mt-3 text-xs text-gray-400 meta">
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-star"></i>7</span>
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-code-branch"></i>2</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-outer">
+              <div class="project-inner text-sm">
+                <div class="flex items-center gap-2">
+                  <div class="font-semibold project-title text-blue-200">sc_progress</div>
+                  <a href="https://github.com/ScubeScripts/sc_progress" target="_blank" rel="noopener noreferrer" aria-label="sc_progress GitHub" class="text-gray-300 hover:text-white">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                </div>
+                <div class="text-xs text-gray-400 mt-2">A Clean and Modern progressBar.</div>
+                <div class="flex items-center justify-between mt-3 text-xs text-gray-400 meta">
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-star"></i>4</span>
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-code-branch"></i>1</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-outer">
+              <div class="project-inner text-sm">
+                <div class="flex items-center gap-2">
+                  <div class="font-semibold project-title text-blue-200">sc_animatedNPC</div>
+                  <a href="https://github.com/ScubeScripts/sc_animatedNPC" target="_blank" rel="noopener noreferrer" aria-label="sc_animatedNPC GitHub" class="text-gray-300 hover:text-white">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                </div>
+                <div class="text-xs text-gray-400 mt-2">A simple system for NPC animation.</div>
+                <div class="flex items-center justify-between mt-3 text-xs text-gray-400 meta">
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-star"></i>4</span>
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-code-branch"></i>2</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-outer">
+              <div class="project-inner text-sm">
+                <div class="flex items-center gap-2">
+                  <div class="font-semibold project-title text-blue-200">sc_dumpster</div>
+                  <a href="https://github.com/ScubeScripts/sc_dumpster" target="_blank" rel="noopener noreferrer" aria-label="sc_dumpster GitHub" class="text-gray-300 hover:text-white">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                </div>
+                <div class="text-xs text-gray-400 mt-2">Simple system for collecting waste.</div>
+                <div class="flex items-center justify-between mt-3 text-xs text-gray-400 meta">
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-star"></i>2</span>
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-code-branch"></i>0</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-outer">
+              <div class="project-inner text-sm">
+                <div class="flex items-center gap-2">
+                  <div class="font-semibold project-title text-blue-200">sc_lawn</div>
+                  <a href="https://github.com/ScubeScripts/sc_lawn" target="_blank" rel="noopener noreferrer" aria-label="sc_lawn GitHub" class="text-gray-300 hover:text-white">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                </div>
+                <div class="text-xs text-gray-400 mt-2">A simple gardener job.</div>
+                <div class="flex items-center justify-between mt-3 text-xs text-gray-400 meta">
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-star"></i>2</span>
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-code-branch"></i>0</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="mt-8 pb-12">
+          <h3 class="text-2xl font-bold text-blue-400 mb-4">Our Recommendation</h3>
+          <p class="text-base text-gray-300 mb-4 max-w-3xl">
+            Community projects we trust — compact overviews with quick links to repos and profiles.
+          </p>
+          <div class="rec-grid">
+            <div class="rec-card">
+              <img class="logo" src="images/overex.png" alt="Overextended">
+              <div class="rec-title">Overextended</div>
+              <div class="rec-desc">Polished UI systems and HUD components used by many servers.</div>
+              <div class="rec-meta"><i class="fa-solid fa-star"></i><span>4.9 · Popular</span></div>
+              <div class="rec-links" aria-hidden="false">
+                <a href="https://github.com/overextended" target="_blank" rel="noopener noreferrer" aria-label="Overextended GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://discord.gg/xq8C4ZMphc" target="_blank" rel="noopener noreferrer" aria-label="Overextended Discord"><i class="fa-brands fa-discord"></i></a>
+                <a href="https://overextended.dev/" target="_blank" rel="noopener noreferrer" aria-label="Overextended Site"><i class="fa-solid fa-box-archive"></i></a>
+              </div>
+            </div>
+
+            <div class="rec-card">
+              <img class="logo" src="images/okok.png" alt="OKOK">
+              <div class="rec-title">OKOK</div>
+              <div class="rec-desc">Great utility scripts and helpful community integrations.</div>
+              <div class="rec-meta"><i class="fa-solid fa-star"></i><span>4.6 · Tools</span></div>
+              <div class="rec-links">
+                <a href="https://discord.com/invite/okok" target="_blank" rel="noopener noreferrer" aria-label="OKOK Discord"><i class="fa-brands fa-discord"></i></a>
+                <a href="https://okok.tebex.io/" target="_blank" rel="noopener noreferrer" aria-label="OKOK Site"><i class="fa-solid fa-store"></i></a>
+              </div>
+            </div>
+
+            <div class="rec-card">
+              <img class="logo" src="images/gabz.png" alt="Gabz">
+              <div class="rec-title">Gabz</div>
+              <div class="rec-desc">Map assets and polished game components.</div>
+              <div class="rec-meta"><i class="fa-solid fa-star"></i><span>4.7 · Assets</span></div>
+              <div class="rec-links">
+                <a href="https://discord.gg/wKqjzww" target="_blank" rel="noopener noreferrer" aria-label="Gabz Discord"><i class="fa-brands fa-discord"></i></a>
+                <a href="https://www.gabzv.com/" target="_blank" rel="noopener noreferrer" aria-label="Gabz Site"><i class="fa-solid fa-store"></i></a>
+              </div>
+            </div>
+
+            <div class="rec-card">
+              <img class="logo" src="images/myscripts.png" alt="MyScripts">
+              <div class="rec-title">MyScripts</div>
+              <div class="rec-desc">Small utilities and gameplay improvements.</div>
+              <div class="rec-meta"><i class="fa-solid fa-star"></i><span>4.4 · Utilities</span></div>
+              <div class="rec-links">
+                <a href="https://discord.com/invite/UyAu2jABzE" target="_blank" rel="noopener noreferrer" aria-label="MyScripts Discord"><i class="fa-brands fa-discord"></i></a>
+                <a href="https://shop.myscripts.eu/" target="_blank" rel="noopener noreferrer" aria-label="MyScripts Site"><i class="fa-solid fa-store"></i></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="pt-6 border-t border-gray-700/50">
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-400">© ScubeScripts</div>
+            <div class="text-sm text-gray-500">Docs — Home</div>
+          </div>
+        </footer>
+      </article>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

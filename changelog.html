@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ScubeScripts — Changelog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    pre{white-space:pre-wrap}
+    .sidebar-scroll{max-height:calc(100vh-96px);overflow:auto}
+    aside ul li a.active {
+      background: rgba(99,102,241,0.12);
+      color: #fff;
+      font-weight: 600;
+      border-radius: .5rem;
+      box-shadow: inset 0 0 0 1px rgba(99,102,241,0.06);
+    }
+    aside nav ul li a {
+      color: inherit;
+      transition: background .14s ease, color .12s ease, transform .12s ease;
+    }
+    aside nav ul li a:hover,
+    aside nav ul li a:focus {
+      background: rgba(255,255,255,0.03);
+      color: #fff;
+      transform: translateY(-2px);
+      outline: none;
+    }
+    .sidebar-scroll .fa-github:hover { color: #4078c0 !important; }
+    .sidebar-scroll .fa-twitter:hover { color: #1da1f2 !important; }
+    .sidebar-scroll .fa-discord:hover { color: #5865f2 !important; }
+    .sidebar-scroll .fa-youtube:hover { color: #ff0000 !important; }
+  </style>
+</head>
+<body class="antialiased bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800 text-gray-100">
+  <div class="min-h-screen flex">
+    <aside class="w-72 border-r bg-gray-800 border-gray-700 text-gray-100 hidden md:block">
+      <div class="p-4 dark:border-gray-700 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="images/logo.png" alt="ScubeScripts" class="w-10 h-10 rounded-lg object-cover" />
+          <div>
+            <div class="font-semibold">ScubeScripts</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">Docs & Guides</div>
+          </div>
+        </div>
+      </div>
+      <div class="p-3">
+        <input id="search" placeholder="Search..." class="w-full rounded px-3 py-2 border border-gray-700 bg-gray-800 text-sm text-gray-200 focus:outline-none" />
+      </div>
+      <nav class="p-3 sidebar-scroll">
+        <ul id="sidebarList" class="space-y-1 text-sm">
+          <li><a href="index.html" class="block px-3 py-2 rounded">Introduction</a></li>
+          <li><a href="installation.html" class="block px-3 py-2 rounded">Installation</a></li>
+          <li><a href="sc_notify.html" class="block px-3 py-2 rounded">sc_notify</a></li>
+          <li><a href="sc_textui.html" class="block px-3 py-2 rounded">sc_textUI</a></li>
+          <li><a href="sc_progress.html" class="block px-3 py-2 rounded">sc_progress</a></li>
+          <li><a href="sc_cartax.html" class="block px-3 py-2 rounded">sc_cartax</a></li>
+          <li><a href="faq.html" class="block px-3 py-2 rounded">FAQ</a></li>
+          <li><a href="changelog.html" class="block px-3 py-2 rounded">Changelog</a></li>
+        </ul>
+      </nav>
+      <div class="p-4">
+        <div class="text-sm text-gray-400 mb-2">Follow ScubeScripts</div>
+        <div class="flex items-center gap-3">
+          <a href="https://github.com/ScubeScripts" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-github fa-lg"></i>
+          </a>
+          <a href="https://twitter.com/ScubeScripts" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-twitter fa-lg"></i>
+          </a>
+          <a href="https://discord.gg/Mqgewse03Yc" target="_blank" rel="noopener noreferrer" aria-label="Discord" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-discord fa-lg"></i>
+          </a>
+          <a href="https://www.youtube.com/@ScubeScripts" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-youtube fa-lg"></i>
+          </a>
+          <a href="https://forum.cfx.re/u/scubescripts/summary" target="_blank" rel="noopener noreferrer" aria-label="Cfx.re" class="text-gray-300 hover:text-white">
+            <i class="fas fa-car fa-lg"></i>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-6 doc-content">
+      <header class="flex items-center justify-between mb-6">
+        <div><h1 id="pageTitle" class="text-2xl font-bold">Changelog</h1><p class="text-sm text-gray-400 dark:text-gray-400">Change log</p></div>
+        <div class="flex items-center gap-3">
+          <button id="mobileMenuBtn" class="md:hidden p-2 rounded border border-gray-200 dark:border-gray-700 flex items-center gap-2">
+            <i class="fa-solid fa-bars"></i>
+            <span>Menu</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="mb-6">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h2 class="text-xl font-semibold">Overview of notable changes</h2>
+          </div>
+          <div class="text-sm text-gray-400">Last updated: 2025-10-16</div>
+        </div>
+
+        <div class="space-y-4">
+          <article class="p-4 bg-gray-800 border border-gray-700 rounded-lg">
+            <h3 class="text-lg font-semibold">v1.1.0 — 2025-10-16</h3>
+            <ul class="list-disc pl-5 mt-2 text-gray-300">
+              <li>Uploading the page to GitHub Pages.</li>
+              <li>Completion of the Docssite.</li>
+              <li>Fix: Resolved various display issues in dark mode.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <footer class="pt-6 border-t border-gray-700/50">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-gray-400">© ScubeScripts</div>
+          <div class="text-sm text-gray-500">Docs — Changelog</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

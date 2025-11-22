@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ScubeScripts — sc_progress</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    pre{white-space:pre-wrap}
+    .sidebar-scroll{max-height:calc(100vh-96px);overflow:auto}
+    aside ul li a.active {
+      background: rgba(99,102,241,0.12);
+      color: #fff;
+      font-weight: 600;
+      border-radius: .5rem;
+      box-shadow: inset 0 0 0 1px rgba(99,102,241,0.06);
+    }
+    aside nav ul li a {
+      color: inherit;
+      transition: background .14s ease, color .12s ease, transform .12s ease;
+    }
+    aside nav ul li a:hover,
+    aside nav ul li a:focus {
+      background: rgba(255,255,255,0.03);
+      color: #fff;
+      transform: translateY(-2px);
+      outline: none;
+    }
+    .code-tabs { max-width: 900px; margin: 0.75rem 0 1.5rem; }
+    .code-tabs .tab-buttons { display:flex; gap:0.5rem; margin-bottom:0.5rem; }
+    .code-tabs .tab {
+      cursor:pointer;
+      padding:0.45rem 0.75rem;
+      border-radius:0.5rem;
+      background:transparent;
+      color:#9CA3AF;
+      border:1px solid transparent;
+      font-size:0.9rem;
+    }
+    .code-tabs .tab.active {
+      background: rgba(99,102,241,0.12);
+      color: #fff;
+      font-weight:600;
+      box-shadow: inset 0 0 0 1px rgba(99,102,241,0.06);
+      transform: translateY(-1px);
+    }
+    .code-panel { display:none; }
+    .code-panel.active { display:block; }
+    .code-box {
+      background: transparent;
+      box-shadow: none;
+      border: none;
+      padding: 0;
+      overflow: visible;
+      max-height: none;
+    }
+    .code-panel pre.hljs {
+      margin: 0;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      background-clip: padding-box;
+      white-space: pre-wrap;
+    }
+    .code-tabs { max-width: 900px; margin: 0.75rem 0 1.5rem 0; }
+    .tabs-meta { display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; }
+    .tabs-meta .dot { width:10px; height:10px; border-radius:999px; background:#ff6b6b; box-shadow: 0 0 0 6px rgba(255,107,107,0.04); }
+    .config-card {
+      max-width: 900px;
+      background: rgba(31,41,55,0.5);
+      border: 1px solid rgba(148,163,184,0.06);
+      border-radius: 0.5rem;
+      padding: 1rem;
+    }
+    .config-list { list-style: none; margin: 0; padding: 0; display:block; }
+    .cfg-row {
+      display: grid;
+      grid-template-columns: 180px 24px 1fr;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.18rem 0;
+    }
+    .cfg-key { color: #cbd5e1; font-weight: 600; }
+    .cfg-eq { color: #9CA3AF; text-align: center; }
+    .cfg-val {
+      color: #e6edf3;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+      word-break: break-word;
+    }
+    .page-title-row { display:flex; align-items:center; gap:0.5rem; }
+    .github-link { color: #fff; opacity:0.9; transition:opacity .12s, transform .12s; margin-left:0.25rem; display:inline-flex; align-items:center; }
+    .github-link:hover { opacity:1; transform: translateY(-2px); }
+    .badge-group { display:flex; gap:0.5rem; margin-top:0.25rem; align-items:center; flex-wrap:wrap; }
+    .badge { display:inline-flex; align-items:center; gap:0.5rem; background: rgba(99,102,241,0.12); color:#fff; padding:0.18rem 0.5rem; border-radius:999px; font-size:0.85rem; font-weight:600; }
+    .badge img { width:16px; height:16px; object-fit:contain; display:inline-block; }
+    .sidebar-scroll .fa-github:hover { color: #4078c0 !important; }
+    .sidebar-scroll .fa-twitter:hover { color: #1da1f2 !important; }
+    .sidebar-scroll .fa-discord:hover { color: #5865f2 !important; }
+    .sidebar-scroll .fa-youtube:hover { color: #ff0000 !important; }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+</head>
+<body class="antialiased bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800 text-gray-100">
+  <div class="min-h-screen flex">
+    <aside class="w-72 border-r bg-gray-800 border-gray-700 text-gray-100 hidden md:block">
+      <div class="p-4 dark:border-gray-700 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="images/logo.png" alt="ScubeScripts" class="w-10 h-10 rounded-lg object-cover" />
+          <div>
+            <div class="font-semibold">ScubeScripts</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">Docs & Guides</div>
+          </div>
+        </div>
+      </div>
+      <div class="p-3">
+        <input id="search" placeholder="Search..." class="w-full rounded px-3 py-2 border border-gray-700 bg-gray-800 text-sm text-gray-200 focus:outline-none" />
+      </div>
+      <nav class="p-3 sidebar-scroll">
+        <ul id="sidebarList" class="space-y-1 text-sm">
+          <li><a href="index.html" class="block px-3 py-2 rounded">Introduction</a></li>
+          <li><a href="installation.html" class="block px-3 py-2 rounded">Installation</a></li>
+          <li><a href="sc_notify.html" class="block px-3 py-2 rounded">sc_notify</a></li>
+          <li><a href="sc_textui.html" class="block px-3 py-2 rounded">sc_textUI</a></li>
+          <li><a href="sc_progress.html" class="block px-3 py-2 rounded">sc_progress</a></li>
+          <li><a href="sc_cartax.html" class="block px-3 py-2 rounded">sc_cartax</a></li>
+          <li><a href="faq.html" class="block px-3 py-2 rounded">FAQ</a></li>
+          <li><a href="changelog.html" class="block px-3 py-2 rounded">Changelog</a></li>
+        </ul>
+      </nav>
+      <div class="p-4">
+        <div class="text-sm text-gray-400 mb-2">Follow ScubeScripts</div>
+        <div class="flex items-center gap-3">
+          <a href="https://github.com/ScubeScripts" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-github fa-lg"></i>
+          </a>
+          <a href="https://twitter.com/ScubeScripts" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-twitter fa-lg"></i>
+          </a>
+          <a href="https://discord.gg/Mqgewse03Yc" target="_blank" rel="noopener noreferrer" aria-label="Discord" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-discord fa-lg"></i>
+          </a>
+          <a href="https://www.youtube.com/@ScubeScripts" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="text-gray-300 hover:text-white">
+            <i class="fa-brands fa-youtube fa-lg"></i>
+          </a>
+          <a href="https://forum.cfx.re/u/scubescripts/summary" target="_blank" rel="noopener noreferrer" aria-label="Cfx.re" class="text-gray-300 hover:text-white">
+            <i class="fas fa-car fa-lg"></i>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-6 doc-content">
+      <header class="flex items-center justify-between mb-6">
+        <div>
+          <div class="page-title-row">
+            <h1 id="pageTitle" class="text-2xl font-bold m-0">sc_progress</h1>
+            <a href="https://github.com/ScubeScripts/sc_progress" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="Open on GitHub">
+              <i class="fa-brands fa-github fa-lg"></i>
+            </a>
+          </div>
+
+          <div class="badge-group" aria-hidden="false">
+            <span class="badge"><img src="images/esx.png" alt="ESX"> ESX</span>
+            <span class="badge"><img src="images/qbcore.png" alt="QBCore"> QBCore</span>
+            <span class="badge">Standalone</span>
+          </div>
+
+          <p class="text-sm text-gray-400 dark:text-gray-400 mt-2">A simple progress UI for FiveM that works with all frameworks.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="mobileMenuBtn" class="md:hidden p-2 rounded border border-gray-200 dark:border-gray-700 flex items-center gap-2">
+            <i class="fa-solid fa-bars"></i>
+            <span>Menu</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="mb-3">
+        <h2 class="text-xl text-white font-semibold m-0">Default</h2>
+      </div>
+
+      <section class="code-tabs">
+        <div class="tab-buttons" role="tablist" aria-label="Code tabs">
+          <button class="tab active" data-tab="client" role="tab" aria-selected="true">client.lua</button>
+          <button class="tab" data-tab="server" role="tab" aria-selected="false">server.lua</button>
+        </div>
+
+        <div class="code-panel active" data-panel="client" role="tabpanel">
+<pre><code class="language-lua hljs">exports.sc_progress:showNUI(time, message)
+
+exports.sc_progress:showNUI(5000, "Loading...")</code></pre>
+        </div>
+
+        <div class="code-panel" data-panel="server" role="tabpanel">
+<pre><code class="language-lua hljs">TriggerClientEvent("sc_progress:showNUI", playerId, time, message)
+
+TriggerClientEvent("sc_progress:showNUI", playerId, 10000, "Loading...")</code></pre>
+        </div>
+      </section>
+
+      <div class="mb-3">
+        <h2 class="text-xl text-white font-semibold m-0">Example</h2>
+      </div>
+
+      <section class="code-tabs">
+        <div class="tab-buttons" role="tablist" aria-label="Code tabs">
+          <button class="tab active" data-tab="lua" role="tab" aria-selected="true">client.lua</button>
+        </div>
+
+        <div class="code-panel active" data-panel="lua" role="tabpanel">
+<pre><code class="language-lua hljs">function startSearching(time, dict, anim, cb)
+    local ped = GetPlayerPed(-1)
+    canSearch = false
+
+    RequestAnimDict(dict)
+    while not HasAnimDictLoaded(dict) do
+        Citizen.Wait(0)
+    end
+
+    exports.sc_progress:showNUI(time, Translation[Config.Locale]['search'])
+    TaskPlayAnim(ped, dict, anim, 8.0, 8.0, time, 1, 1, 0, 0, 0)
+
+    Wait(time)
+    ClearPedTasks(ped)
+    canSearch = true
+    TriggerServerEvent(cb)
+end</code></pre>
+        </div>
+      </section>
+
+      <figure class="mb-4">
+        <img src="images/sc_progress.png" alt="Preview: sc_progress" class="rounded-md border border-gray-700 max-w-[420px] w-full object-cover" />
+        <figcaption class="text-xs text-gray-400 mt-2"></figcaption>
+      </figure>
+
+      <footer class="pt-6 border-t border-gray-700/50">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-gray-400">© ScubeScripts</div>
+          <div class="text-sm text-gray-500">Docs — sc_progress</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      document.querySelectorAll('.code-tabs').forEach(container => {
+        const tabs = container.querySelectorAll('.tab');
+        const panels = container.querySelectorAll('.code-panel');
+
+        function activate(name) {
+          tabs.forEach(t => {
+            const active = t.dataset.tab === name;
+            t.classList.toggle('active', active);
+            t.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+          panels.forEach(p => p.classList.toggle('active', p.dataset.panel === name));
+        }
+
+        const hash = (location.hash && location.hash.slice(1));
+        const hashMatches = hash && Array.from(tabs).some(t => t.dataset.tab === hash);
+        const initial = hashMatches ? hash : (tabs[0] ? tabs[0].dataset.tab : null);
+        if (initial) activate(initial);
+
+        tabs.forEach(t => t.addEventListener('click', () => {
+          activate(t.dataset.tab);
+          try { history.replaceState(null, '', '#'+t.dataset.tab); } catch(e){}
+        }));
+      });
+
+      try { if (window.hljs && typeof hljs.highlightAll === 'function') hljs.highlightAll(); } catch(e){}
+    })();
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
