@@ -4,16 +4,41 @@ const sidebarList = document.getElementById('sidebarList');
 (function setActiveSidebar(){
   if(!sidebarList) return;
   const links = Array.from(sidebarList.querySelectorAll('a'));
-  const loc = window.location.pathname.split('/').pop() || 'index.html';
+
+  function stripHtml(name){
+    return (name || '').replace(/\.html$/, '');
+  }
+
+  // bestimme aktuellen "Namen" (wenn root => index)
+  const raw = window.location.pathname.split('/').pop();
+  const currentName = stripHtml(raw || 'index.html'); // z.B. 'changelog' oder 'index'
+
   links.forEach(a=>{
     const href = a.getAttribute('href') || '';
-    const hrefFile = href.split('/').pop();
-    if(hrefFile === loc || (hrefFile === 'index.html' && (loc === '' || loc === 'index.html'))){
+    const hrefFile = href.split('/').pop() || '';
+    const hrefName = stripHtml(hrefFile);
+
+    if (hrefName === currentName) {
       a.classList.add('active');
     } else {
       a.classList.remove('active');
     }
   });
+})();
+
+// Entferne ".html" aus der Adressleiste nach dem Laden (nur sichtbar, Seite bleibt geladen)
+// Hinweis: direkte Zugriffe auf /changelog ohne serverseitige Rewrites können 404 erzeugen.
+// Für echte "clean URLs" muss der Server so konfiguriert werden, dass er z.B. /changelog zu /changelog.html mapped.
+(function hideHtmlInUrl(){
+  const p = window.location.pathname;
+  if (!p) return;
+  if (p.endsWith('.html')) {
+    let newPath = p.replace(/\.html$/, '');           // /foo.html -> /foo
+    newPath = newPath.replace(/\/index$/, '/');      // /index -> /
+    try {
+      history.replaceState(null, '', newPath + window.location.search + window.location.hash);
+    } catch(e){}
+  }
 })();
 
 document.querySelectorAll('.copy-btn').forEach(b=>{
@@ -54,7 +79,7 @@ document.querySelectorAll('aside .fa-brands').forEach(icon => {
   link.addEventListener('mouseenter', () => {
     if (icon.classList.contains('fa-github')) {
       icon.style.color = '#4078c0';
-    } else if (icon.classList.contains('fa-twitter')) {
+    } else if (icon.classList.contains('fa-x-twitter')) {
       icon.style.color = '#1da1f2';
     } else if (icon.classList.contains('fa-discord')) {
       icon.style.color = '#5865f2';
